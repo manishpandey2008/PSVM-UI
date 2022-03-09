@@ -1,0 +1,13 @@
+<div class="h-full opacity-90" style="background-color: #abcdef;">
+  <div>
+      <app-mobile-top-nav (toggle)="sidebarToggel()"></app-mobile-top-nav>
+  </div>
+  <div class="w-full overflow-hidden" >
+      <div  class="absolute z-index-10 w-10">
+        <app-mobile-side-nav (selectResponce)="sidebarToggel()"></app-mobile-side-nav>
+      </div>
+      <div class=" h-full overflow-x-scroll mx-6 mt-20 pb-10" >
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="w-full">
+  <div class="container">
+      <div class=" mx-10">
+        <!-- card area  -->
+          <div class="grid grid-cols-4 grid-flow-row-dense gap-4">
+            <ng-container *ngFor="let card of cardData">
+              <div class="w-full">
+                <!-- <app-card [cardData]="card"></app-card> -->
+              </div>
+            </ng-container>
+          </div>
+      </div>
+      <div class="mx-10 mt-5">
+        <!-- graph area  -->
+        <div class="w-full bg-white h-96">
+            <span (click)="getValue()" class="px-4 py-2 rounded-full mx-4 my-4 bg-green-100 text-gray-300 text-sm">Click</span>
+        </div>
+      </div>
+  </div>
+</div>

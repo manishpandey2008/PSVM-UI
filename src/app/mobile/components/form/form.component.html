@@ -1,0 +1,17 @@
+<div class="top-0 left-0 right-0 bottom-0 absolute bg-gray-500 opacity-70 z-10" *ngIf="isShow"></div>
+
+<div class="flex items-center justify-center absolute z-20 top-20" *ngIf="isShow">
+  <div class="w-full max-w-md">
+    <div class="bg-white shadow-lg rounded px-10 pt-6 pb-8 mb-2">
+      <div (click)="isShow=false" class="absolute rotate-45 text-3xl top-0 right-0 w-10 h-10 p-2">
+        <span>+</span>
+      </div>
+      <ng-content></ng-content>
+      <div class="flex items-center justify-start">
+        <span class="px-4 py-1.5 rounded text-white inline-block shadow-lg bg-blue-500 hover:bg-blue-600 focus:bg-blue-700" type="submit">Update</span>
+        <!-- <span (click)="isShow=false" class="px-4 py-1.5 mx-5 rounded text-gray-600 border border-blue-500 inline-block shadow-lg bg-white hover:bg-blue-300 focus:bg-blue-300" >Close</span> -->
+        <span (click)="isShow=false" class="px-4 py-1.5 mx-5 rounded text-white border border-red-300 inline-block shadow-lg bg-red-300 hover:bg-red-400 focus:bg-red-500" >Delete</span>
+      </div>
+    </div>
+  </div>
+</div>

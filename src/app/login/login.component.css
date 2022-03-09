@@ -1,0 +1,11 @@
+.login-bord{
+  width: 30vw;
+}
+
+.borderColor{
+  border-color: rgb(125 211 252/var(--tw-text-opacity))
+}
+
+.custom-shadow{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

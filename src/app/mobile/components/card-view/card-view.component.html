@@ -1,0 +1,30 @@
+<!-- Home card  -->
+
+<div class="w-full" >
+  <div class="border-2 border-gray-300 bg-white rounded-md" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+    <div class="w-full flex justify-between items-center px-3 text-sm "  [class]="data.headerColor">
+      <div class="py-4">{{data.header}}</div>
+      <div [routerLink]="data.chageButtonUrl" class="px-3 py-1 bg-gray-200 rounded-lg" *ngIf="data.chageButtonUrl!='none' && data.layout==='home'">{{data.chageButtonText}}</div>
+      <input type="radio" name="location" id="location" *ngIf="data.layout!=='home'"
+      class="w-5 h-5">
+    </div>
+    <div class="py-5 overflow-y-auto max-h-60 px-2" [class]="data.textAlingment">
+        <ng-content select="[id=home]" ></ng-content>
+    </div>
+  </div>
+</div>
+
+<!--
+<div *ngIf="data.layout==='location'">
+  <div class="border-2 border-gray-300 bg-white rounded-md" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+    <div class="w-full flex justify-between items-center px-3 text-sm bg-gray-300" >
+      <div class="py-4">Permanent locatopn</div>
+      <div class="px-3 py-1 bg-gray-200 rounded-lg" >
+        <input type="radio">
+      </div>
+    </div>
+    <div class="py-5 overflow-y-auto max-h-60 px-2 text-center" >
+        <ng-content select="[id=location]"></ng-content>
+    </div>
+  </div>
+</div> -->
