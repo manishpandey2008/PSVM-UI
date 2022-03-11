@@ -8,11 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { FarmerLoginComponent } from './mobile/farmer-login/farmer-login.component';
 import { DesktopModule } from './desktop/desktop.module'
 import { MobileModule } from './mobile/mobile.module';
+import { TestPipe } from './pipes/test.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    TestPipe,
   ],
   imports: [
     BrowserModule,

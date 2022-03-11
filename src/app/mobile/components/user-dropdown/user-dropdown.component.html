@@ -1,0 +1,41 @@
+<div class="w-1/2 py-2 bg-white absolute shadow right-0 top-0 z-50 mr-7 rounded mt-14" *ngIf="showMenu" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;">
+    <div class="w-4 h-4 bg-white transform rotate-45 float-right -mt-4 mr-2.5"></div>
+    <div class="mx-3 h-full my-2" *ngIf="isLogin">
+        <div class="w-full py-0.5 cursor-pointer flex justify-start">
+          <div class="w-6 h-6">
+            <span class="text-xs px-1.5 py-1.5 text-center ml-2 border border-green-500 bg-green-500  rounded-full text-white uppercase">
+              MP
+            </span>
+          </div>
+          <div class="ml-2 -mt-2">
+            <span class="text-sm px-1.5 ml-2 whitespace-nowrap" style="font-weight: 500;">
+              Manish Pandey
+            </span>
+            <span class="text-xs px-1.5 ml-2 block text-gray-500 whitespace-nowrap" >
+              Laboure
+            </span>
+            <!-- <span class="text-xs px-1.5 ml-2 block text-secondary-50 whitespace-nowrap" *ngIf="roles.toString().length>20">
+              {{roles.toString().substring(0, 20)}}...
+            </span> -->
+
+          </div>
+          <!-- <span class="text-xs px-2" *ngIf="userUuid!=undefined">{{userUuid | fslabel:'user' |async}}</span> -->
+        </div>
+        <hr class="text-gray-200 py-0.5">
+        <div (click)="showMenu=false" routerLink="/dashboard/profile"  class="w-full hover:bg-gray-400 py-1 rounded cursor-pointer">
+          <span class="text-xs px-2 ">My profile</span>
+        </div>
+        <!-- <div class="w-full hover:bg-secondary-20 py-0.5 rounded cursor-pointer">
+          <span class="text-xs px-2">Company profile</span>
+        </div> -->
+        <!-- <hr class="w-full text-secondary-10 my-0.5"> -->
+        <div class="w-full bg-red-400 hover:opacity-90 py-1 rounded cursor-pointer mt-2">
+          <span class="text-xs px-2 text-white" >Logout</span>
+        </div>
+    </div>
+    <div class="mx-3 h-full my-2" *ngIf="!isLogin">
+      <div  class="w-full bg-secondary-50 hover:opacity-90 py-0.5 rounded cursor-pointer">
+        <span class="text-xs px-2 text-white" >Login</span>
+      </div>
+    </div>
+</div>

@@ -14,6 +14,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HistoryComponent } from './components/history/history.component';
 import { FormComponent } from './components/form/form.component';
 import { LocationComponent } from './components/location/location.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.component';
 
 
 
@@ -32,6 +34,8 @@ import { LocationComponent } from './components/location/location.component';
     HistoryComponent,
     FormComponent,
     LocationComponent,
+    NotificationComponent,
+    UserDropdownComponent,
   ],
   exports:[
 

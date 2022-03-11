@@ -22,8 +22,8 @@ isShow(data:any){
   this.isView=data
 }
 
-  changeTab(index:any){
-    if(index!=this.activeIndex){
+  changeTab(index?:any){
+    if(index!=this.activeIndex && index){
       this.selectedTab[this.activeIndex]=false
       this.selectedTab[index]=true
       this.activeIndex=index

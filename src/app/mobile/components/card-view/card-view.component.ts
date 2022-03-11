@@ -9,6 +9,8 @@ export class CardViewComponent implements OnInit {
 
   @Input() data:any;
 
+  collapse=false
+
   constructor() { }
 
   ngOnInit(): void {

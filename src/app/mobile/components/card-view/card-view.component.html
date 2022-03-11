@@ -1,30 +1,43 @@
 <!-- Home card  -->
 
-<div class="w-full" >
+<div class="w-full" *ngIf="data.layout==='location' || data.layout==='home'">
   <div class="border-2 border-gray-300 bg-white rounded-md" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
     <div class="w-full flex justify-between items-center px-3 text-sm "  [class]="data.headerColor">
       <div class="py-4">{{data.header}}</div>
       <div [routerLink]="data.chageButtonUrl" class="px-3 py-1 bg-gray-200 rounded-lg" *ngIf="data.chageButtonUrl!='none' && data.layout==='home'">{{data.chageButtonText}}</div>
-      <input type="radio" name="location" id="location" *ngIf="data.layout!=='home'"
-      class="w-5 h-5">
+      <input type="radio" name="location" id="location" *ngIf="data.layout==='location'" class="w-5 h-5">
     </div>
-    <div class="py-5 overflow-y-auto max-h-60 px-2" [class]="data.textAlingment">
+    <div class="py-5 overflow-y-auto max-h-60 px-2 scrollable-div" [class]="data.textAlingment">
         <ng-content select="[id=home]" ></ng-content>
     </div>
   </div>
 </div>
 
-<!--
-<div *ngIf="data.layout==='location'">
+<!-- Price card  -->
+
+<div class="w-full" *ngIf="data.layout==='price'">
   <div class="border-2 border-gray-300 bg-white rounded-md" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
-    <div class="w-full flex justify-between items-center px-3 text-sm bg-gray-300" >
-      <div class="py-4">Permanent locatopn</div>
-      <div class="px-3 py-1 bg-gray-200 rounded-lg" >
-        <input type="radio">
+    <div (click)="collapse=!collapse" class="w-full flex justify-between items-center px-3 text-sm "  [class]="data.headerColor">
+      <div class="py-4">{{data.header}}</div>
+      <div class="text-base font-bold text-gray-400">
+        <svg [ngClass]="{'rotate-180': collapse}" xmlns="http://www.w3.org/2000/svg" class="w-3" viewBox="0 0 320 512">
+          <path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z"/>
+        </svg>
       </div>
     </div>
-    <div class="py-5 overflow-y-auto max-h-60 px-2 text-center" >
-        <ng-content select="[id=location]"></ng-content>
+    <div *ngIf="collapse"  class="py-5 overflow-y-auto max-h-60 px-2 scrollable-div" [class]="data.textAlingment">
+        <ng-content select="[id=price]" ></ng-content>
     </div>
   </div>
-</div> -->
+</div>
+
+<!-- History card  -->
+
+<div class="w-full" *ngIf="data.layout==='history'">
+  <div [ngClass]="{'border-green-300': data.paymentStatus=='yes','border-red-300':data.paymentStatus=='no','border-yellow-300':data.paymentStatus=='none'}" class="border-4 bg-white rounded-md" style="box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;">
+    <div class="py-5 overflow-y-auto max-h-64 px-2 scrollable-div" [class]="data.textAlingment">
+        <ng-content select="[id=history]" ></ng-content>
+    </div>
+  </div>
+</div>
+
