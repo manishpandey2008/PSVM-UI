@@ -1,12 +1,24 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ClaimsComponent } from "./components/claims/claims.component";
+import { GovtYojanaComponent } from "./components/govt-yojana/govt-yojana.component";
 import { HomeComponent } from "./components/home/home.component";
+import { LabourComponent } from "./components/labour/labour.component";
+import { OwnarComponent } from "./components/ownar/ownar.component";
+import { ProfileComponent } from "./components/profile/profile.component";
+import { WorkListComponent } from "./components/work-list/work-list.component";
 import { DashboardHomeComponent } from "./dashboard-home/dashboard-home.component";
 
 const routes: Routes=[
   {path:"",component:DashboardHomeComponent,
   children: [
     {path:"home",component:HomeComponent},
+    {path:"labour",component:LabourComponent},
+    {path:"owner",component:OwnarComponent},
+    {path:"govt-yojana",component:GovtYojanaComponent},
+    {path:"claim",component:ClaimsComponent},
+    {path:"work-list",component:WorkListComponent},
+    {path:"profile",component:ProfileComponent}
   ]}
 ]
 

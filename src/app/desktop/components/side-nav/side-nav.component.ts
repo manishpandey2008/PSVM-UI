@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  selectedTab=[true,false,false,false,false]
+  selectedTab=[true,false,false,false,false,false,false,false]
   activeIndex=0
 
   constructor() { }
