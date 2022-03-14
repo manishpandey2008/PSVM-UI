@@ -5,16 +5,20 @@
           <div class="grid grid-cols-4 grid-flow-row-dense gap-4">
             <ng-container *ngFor="let card of cardData">
               <div class="w-full">
-                <!-- <app-card [cardData]="card"></app-card> -->
+                <app-card [cardData]="card" ></app-card>
               </div>
             </ng-container>
           </div>
       </div>
-      <div class="mx-10 mt-5">
+      <div class="mx-10 mt-5 ">
         <!-- graph area  -->
-        <div class="w-full bg-white h-96">
-            <span (click)="getValue()" class="px-4 py-2 rounded-full mx-4 my-4 bg-green-100 text-gray-300 text-sm">Click</span>
+        <div class="w-full bg-white flex justify-between min-h-full px-10 py-10">
+          <div id="chart" class="w-1/2 h-80"></div>
+          <div id="chart1" class="w-1/2 h-80"></div>
         </div>
+        <!-- <div class="w-full bg-white h-96">
+            <span (click)="getValue()" class="px-4 py-2 rounded-full mx-4 my-4 bg-green-100 text-gray-300 text-sm">Click</span>
+        </div> -->
       </div>
   </div>
 </div>

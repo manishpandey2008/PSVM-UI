@@ -11,6 +11,8 @@ import { GovtYojanaComponent } from './components/govt-yojana/govt-yojana.compon
 import { ClaimsComponent } from './components/claims/claims.component';
 import { WorkListComponent } from './components/work-list/work-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CardComponent } from './components/card/card.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     GovtYojanaComponent,
     ClaimsComponent,
     WorkListComponent,
-    ProfileComponent
+    ProfileComponent,
+    CardComponent,
+    TableComponent
   ],
   exports:[
   ],
