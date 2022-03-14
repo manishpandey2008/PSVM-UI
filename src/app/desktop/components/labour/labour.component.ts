@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { FormComponent } from '../form/form.component';
 
 @Component({
   selector: 'app-labour',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./labour.component.css']
 })
 export class LabourComponent implements OnInit {
+
+  @ViewChild(FormComponent) form!:FormComponent;
 
   header=[{label:"Name",fieldName:"name"},
           {label:"Phone number",fieldName:"phoneNumber"},
@@ -20,9 +23,16 @@ export class LabourComponent implements OnInit {
         {name:"Avinash Pandey",phoneNumber:'7658765454','email':'avinash.2008@gmail.com'},
         {name:"Totu Pandey",phoneNumber:'2345345676','email':'totu.2008@gmail.com'}]
 
+  isOpen=false
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  openForm(){
+    this.isOpen=!this.isOpen;
+    this.form.show(this.isOpen)
   }
 
 }

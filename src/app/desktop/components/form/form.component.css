@@ -1,0 +1,31 @@
+.main{
+  height: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.header-height{
+  height: 10vh;
+}
+input,select{
+  padding-top: 0.4vw;
+  padding-bottom: 0.4vw;
+  font-size: 0.9vw;
+}
+#select-option:hover{
+  background-color: #C7C7C7 !important;
+  box-shadow: 0 0 10px 10px #e1358f inset;
+}
+.placeholder {
+  font-size: 0.8vw;
+  color: #afa8a5 !important;
+  font-family: IBM Plex Sans, sans-serif;
+}
+
+.show{
+  transform: translateX(0%);
+  transition:transform 0.5s;
+}
+.hide{
+  transform: translateX(100%);
+  transition:transform 1s;
+}
