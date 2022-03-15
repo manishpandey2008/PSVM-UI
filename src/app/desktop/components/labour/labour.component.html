@@ -2,8 +2,8 @@
   <div class="container">
     <div class="mx-10 mt-5 ">
       <div class="w-full bg-white min-h-full px-5 py-10">
-        <app-tools (addNew)="addNew()"></app-tools>
-        <app-table [header]="header" [data]="data"></app-table>
+        <app-tools (addNew)="addNew()"  [inputData]="{name:'Labour'}"></app-tools>
+        <app-table></app-table>
       </div>
     </div>
   </div>

@@ -2,25 +2,25 @@
   <div class="min-w-screen min-h-scree flex items-center justify-center font-sans ">
     <div class="w-full">
       <div class="bg-white shadow-md rounded my-6">
-        <table class="min-w-max w-full table-auto">
+        <table class="min-w-max w-full table-auto" *ngIf="isShow">
           <thead>
             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
               <ng-container *ngFor="let item of header">
-                <th class="py-3 px-6 text-left">{{item.label}}</th>
+                <th class="py-3 px-6 text-left">{{item.header}}</th>
               </ng-container>
               <th class="py-3 px-6 text-left">Action</th>
             </tr>
           </thead>
           <tbody class="text-gray-600 text-sm font-light">
-            <ng-container *ngFor="let item of data">
+            <ng-container *ngFor="let x of data">
               <tr class="border-b border-gray-200 hover:bg-gray-100">
-                <ng-container *ngFor="let label of header">
+                <ng-container *ngFor="let fieldName of header">
                   <td class="py-3 px-6 text-left">
                     <div class="flex items-center">
-                      <div class="mr-2" *ngIf="label.fieldName=='name'">
+                      <div class="mr-2" *ngIf="fieldName.field=='name'">
                         <img class="w-6 h-6 rounded-full" src="../../../../assets/image/farmer.jpg" />
                       </div>
-                      <span>{{item[label.fieldName]}}</span>
+                      <span>{{x[fieldName.field]}}</span>
                     </div>
                   </td>
                 </ng-container>

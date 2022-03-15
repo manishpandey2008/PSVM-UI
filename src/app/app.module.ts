@@ -9,8 +9,9 @@ import { DesktopModule } from './desktop/desktop.module'
 import { MobileModule } from './mobile/mobile.module';
 import { TestPipe } from './pipes/test.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BaseComponent } from './base/base.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -18,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     LoginComponent,
     TestPipe,
-    BaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     DesktopModule,
     MobileModule,
+    SweetAlert2Module,
     HttpClientModule,
   ],
   providers: [],

@@ -1,45 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { BaseComponent } from 'src/app/base/base.component';
 import { FieldEntity } from 'src/app/model/field.entity';
 import { FormEntity } from 'src/app/model/form-entity';
 import { JsonApiService } from 'src/app/service/json-api.service';
 import { FormComponent } from '../form/form.component';
+import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-labour',
   templateUrl: './labour.component.html',
   styleUrls: ['./labour.component.css']
 })
-export class LabourComponent extends BaseComponent implements OnInit {
+export class LabourComponent implements OnInit {
 
   @ViewChild(FormComponent) form!:FormComponent;
+  @ViewChild(TableComponent) table!:TableComponent;
 
-  header=[{label:"Name",fieldName:"name"},
-          {label:"Phone number",fieldName:"phoneNumber"},
-          {label:"Email",fieldName:"email"},
-          {label:"Email",fieldName:"email"},
-          {label:"Email",fieldName:"email"},
-          {label:"Email",fieldName:"email"},
-          {label:"Email",fieldName:"email"},
-        ]
-  data=[{name:"Manish Pandey",phoneNumber:'9876543212','email':'smpandey.2008@gmail.com'},
-        {name:"Balmukund Pandey",phoneNumber:'7686545432','email':'manish.2008@gmail.com'},
-        {name:"Avinash Pandey",phoneNumber:'7658765454','email':'avinash.2008@gmail.com'}]
+  data=[{firstName:"Manish",lastName:"Pandey",phone:'9876543212',email:'smpandey.2008@gmail.com',address:"Kota"},
+  {firstName:"Manish",lastName:"Pandey",phone:'9876543212',email:'smpandey.2008@gmail.com',address:"Kota"},
+  {firstName:"Manish",lastName:"Pandey",phone:'9876543212',email:'smpandey.2008@gmail.com',address:"Kota"}]
+
+  formEntity!:FormEntity;
 
   constructor(private jsonService:JsonApiService,private http:HttpClient) {
-    super();
   }
 
   ngOnInit(): void {
-
+    this.jsonService.fetch<FormEntity>('labour').subscribe(entity => {
+      this.formEntity=entity;
+      this.table.show(entity,this.data)
+    })
   }
 
   addNew(){
-    this.jsonService.fetch<FormEntity>('form-data').subscribe(entity => {
-      this.form.show(true,entity)
-    })
+    this.form.show(true,this.formEntity)
   }
 
 }

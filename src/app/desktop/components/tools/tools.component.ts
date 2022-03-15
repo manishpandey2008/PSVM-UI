@@ -1,4 +1,4 @@
-import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output ,EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-tools',
@@ -7,6 +7,7 @@ import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
 })
 export class ToolsComponent implements OnInit {
 
+  @Input() inputData!:any
   @Output() addNew=new EventEmitter;
 
   rotate=false

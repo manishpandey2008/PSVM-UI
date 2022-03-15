@@ -1,7 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldEntity } from 'src/app/model/field.entity';
 import { FormEntity } from 'src/app/model/form-entity';
 
 @Component({
@@ -31,6 +30,11 @@ export class FormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  saveForm(){
+
   }
 
   show(status:any,fields:FormEntity,data?:any){

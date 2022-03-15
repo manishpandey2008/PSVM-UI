@@ -5,6 +5,6 @@ export class FormEntity{
   title?:String;
   width?:String;
   entity?:String;
-  fields?:FieldEntity[];
-  tableCols?:TableEntity;
+  fields:FieldEntity[]=[];
+  tableCols:TableEntity[]=[];
 }
