@@ -1,30 +1,66 @@
-<span class="top-0 right-0 left-0 bottom-0 bg-gray-200 absolute opacity-30 z-40 " *ngIf="isVisible" ></span>
+<span class="top-0 right-0 left-0 bottom-0 bg-gray-500 absolute opacity-30 z-40 " *ngIf="isVisible" ></span>
 <div *ngIf="showOverlay" class="fixed inset-0 overflow-hidden z-50" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
   <div  class="absolute inset-0 overflow-hidden">
-    <!-- Background overlay, show/hide based on slide-over state. -->
     <div   class="absolute inset-0" aria-hidden="true"></div>
 
-    <div (click)="$event.stopPropagation()"  class="fixed inset-y-0 right-0 flex w-1/3"  >
+    <div (click)="$event.stopPropagation()"  class="fixed inset-y-0 right-0 flex w-2/5"  >
       <div class="w-screen" [@openClose]="isVisible ? 'open' : 'closed'" (@openClose.done)="animEnd($event)">
         <div class="h-full flex flex-col bg-white shadow-xl overflow-hidden">
-              <!-- Replace with your content -->
-              <div class="grid grid-rows-form h-screen">
+              <div class="h-screen">
                 <header class="bg-secondary-100 flex py-4 px-14 justify-between items-center" style="height: 10vh;">
-                  <h2 class="text-sm xl:text-lg 2xl:text-2xl font-medium text-secondary-50">Test</h2>
+                  <h2 class="text-sm xl:text-lg 2xl:text-2xl font-medium text-secondary-50">{{formEntity.title}}</h2>
                   <button (click)="isVisible=!isVisible" class="text-gray-400 hover:text-gray-500 focus:outline-none p-1 rounded-full bg-secondary-350 hover:bg-secondary-300">
                     <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
                 </header>
+                <div class="px-14 top-0">
+                  <main cdkScrollable class="overflow-y-auto grid mr-1 grid-cols-2 gap-x-10 my-4 main" *ngIf="isVisible"  style="height: fit-content;">
+                    <ng-container  *ngFor="let field of formEntity?.fields;index as i">
 
-                    <!-- <app-main-form (closeStatus)="hide($event)" (disabledStatus)="disabled=true"></app-main-form> -->
+                      <span  *ngIf="field.divider!==undefined" class="col-span-2 mb-2" [ngClass]="{'mt-4': i!==0}" style="font-size: 0.75vw;color:#605F5F;letter-spacing: 0.47px;">
+                        {{field.divider}}
+                        <hr style="color:#dddddd" class="mt-1">
+                      </span>
 
-                <footer class="pt-2 pb-6 px-14 flex gap-4 bottom-0" >
-                  <button  [disabled]="disabled" type="button" class="py-1.5 bg-tertiary-700 text-tertiary-100 font-medium text-sm rounded-sm shadow-md hover:opacity-90" style="width: 11vw;">
+                      <div ngClass="{{field.colSpan}}" class="mt-3">
+                        <label for="field.fieldName" class="block font-medium text-secondary-1000" style="font-size: 0.8vw;">{{field.label}}</label>
+                        <div [ngSwitch]="field.inputType">
+                         <!-- [formGroup]="formGroup" -->
+
+                          <input *ngSwitchCase="'input'" type="text" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500" placeholder="{{field.placeHolder}}">
+                          <input *ngSwitchCase="'Number'"  type="number" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm focus:outline-none   hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
+                          <input *ngSwitchCase="'date'"  type="date" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm focus:outline-none   hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
+                          <input *ngSwitchCase="'password'"  type="password" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm  focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
+                          <textarea *ngSwitchCase="'textarea'" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300  h-32 py-2 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 " placeholder="{{field.placeHolder}}"></textarea>
+
+                         <ng-container *ngSwitchCase="'single-select'">
+                            <ng-container>
+                              <select  class="appearance-none block w-full pl-3 border text-gray-500 border-gray-300 rounded-sm focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 ">
+                                <option [value]="null" id="select-option" class=" appearance-none focus:bg-secondary-300 hover:bg-gray-500" selected>{{field.placeHolder}}</option>
+                                <!-- <option *ngFor="let option of data.get(field.fieldName)" value="{{option.value}}" class="appearance-none focus:bg-secondary-300 hover:bg-gray-500" >{{option.label}}</option> -->
+                              </select>
+                            </ng-container>
+                         </ng-container>
+
+                          <div *ngSwitchDefault class="bg-gray-400 h-8" ngClass="{{field.colSpan}}">
+                            {{field.fieldName}}
+                          </div>
+                          <!-- <span *ngIf="formControls.get(field.fieldName)?.errors && showErrors" class="text-error-500 text-xs italic">
+                              Please enter <span class="lowercase">{{field.label}}</span>
+                          </span> -->
+                      </div>
+                    </div>
+                    </ng-container >
+                  </main>
+                </div>
+
+                <footer class="pt-2 pb-6 px-14 flex gap-4 absolute bottom-0" >
+                  <button  type="button" class="py-1.5 bg-blue-300 text-blue-900  border-2 border-blue-300 font-medium text-sm rounded-sm shadow-sm hover:opacity-90" style="width: 11vw;">
                     Save
                   </button>
-                  <button (click)="isVisible=!isVisible" type="button" class="py-1.5 bg-tertiary-100 text-secondary-1000 font-medium text-sm rounded-sm shadow-sm border border-secondary-600 hover:opacity-90" style="width: 11vw;">
+                  <button (click)="isVisible=!isVisible" type="button" class="py-1.5 bg-white text-gray-800 font-medium text-sm rounded-sm shadow-sm border border-gray-500 hover:opacity-90" style="width: 11vw;">
                     Close
                   </button>
                 </footer>

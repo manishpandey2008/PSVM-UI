@@ -2,13 +2,11 @@
   <div class="container">
     <div class="mx-10 mt-5 ">
       <div class="w-full bg-white min-h-full px-5 py-10">
+        <app-tools (addNew)="addNew()"></app-tools>
         <app-table [header]="header" [data]="data"></app-table>
       </div>
     </div>
   </div>
 </div>
 
-
-<span class="px-4 py-2 rounded-lg bg-green-200 ml-80" (click)="openForm()">click</span>
-
- <app-form></app-form>
+ <app-form ></app-form>

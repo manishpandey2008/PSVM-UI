@@ -13,6 +13,8 @@ import { WorkListComponent } from './components/work-list/work-list.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CardComponent } from './components/card/card.component';
 import { TableComponent } from './components/table/table.component';
+import { FormComponent } from './components/form/form.component';
+import { ToolsComponent } from './components/tools/tools.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +29,16 @@ import { TableComponent } from './components/table/table.component';
     WorkListComponent,
     ProfileComponent,
     CardComponent,
-    TableComponent
+    TableComponent,
+    FormComponent,
+    ToolsComponent,
   ],
   exports:[
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+
   ]
 })
 export class DesktopModule { }

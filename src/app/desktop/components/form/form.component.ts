@@ -1,5 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { FieldEntity } from 'src/app/model/field.entity';
+import { FormEntity } from 'src/app/model/form-entity';
 
 @Component({
   selector: 'app-form',
@@ -19,30 +22,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
-
-
   isVisible = false;
   showOverlay = false;
   disabled=false
+  formEntity!:FormEntity
+  formGroup!:FormGroup
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  animEnd($event: any) {
-    this.showOverlay = this.isVisible;
-  }
-
-  show(status:any){
-    this.showOverlay = true;
-    this.isVisible = true;
-    this.disabled=false
+  show(status:any,fields:FormEntity,data?:any){
+    this.formEntity=fields
+    this.showOverlay = status;
+    this.isVisible = status;
   }
 
   hide(status:boolean) {
     this.isVisible = false;
     this.showOverlay=false
   }
-
+  animEnd($event: any) {
+    this.showOverlay = this.isVisible;
+  }
 
 }

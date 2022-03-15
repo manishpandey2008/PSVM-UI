@@ -1,4 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { takeUntil } from 'rxjs';
+import { BaseComponent } from 'src/app/base/base.component';
+import { FieldEntity } from 'src/app/model/field.entity';
+import { FormEntity } from 'src/app/model/form-entity';
+import { JsonApiService } from 'src/app/service/json-api.service';
 import { FormComponent } from '../form/form.component';
 
 @Component({
@@ -6,7 +12,7 @@ import { FormComponent } from '../form/form.component';
   templateUrl: './labour.component.html',
   styleUrls: ['./labour.component.css']
 })
-export class LabourComponent implements OnInit {
+export class LabourComponent extends BaseComponent implements OnInit {
 
   @ViewChild(FormComponent) form!:FormComponent;
 
@@ -20,19 +26,20 @@ export class LabourComponent implements OnInit {
         ]
   data=[{name:"Manish Pandey",phoneNumber:'9876543212','email':'smpandey.2008@gmail.com'},
         {name:"Balmukund Pandey",phoneNumber:'7686545432','email':'manish.2008@gmail.com'},
-        {name:"Avinash Pandey",phoneNumber:'7658765454','email':'avinash.2008@gmail.com'},
-        {name:"Totu Pandey",phoneNumber:'2345345676','email':'totu.2008@gmail.com'}]
+        {name:"Avinash Pandey",phoneNumber:'7658765454','email':'avinash.2008@gmail.com'}]
 
-  isOpen=false
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private jsonService:JsonApiService,private http:HttpClient) {
+    super();
   }
 
-  openForm(){
-    this.isOpen=!this.isOpen;
-    this.form.show(this.isOpen)
+  ngOnInit(): void {
+
+  }
+
+  addNew(){
+    this.jsonService.fetch<FormEntity>('form-data').subscribe(entity => {
+      this.form.show(true,entity)
+    })
   }
 
 }

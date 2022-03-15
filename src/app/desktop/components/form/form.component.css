@@ -1,3 +1,9 @@
+
+::-webkit-scrollbar {
+  width: 0.6vw;
+  height: 0.9vw;
+}
+
 .main{
   height: 90%;
   overflow-y: scroll;
@@ -6,9 +12,9 @@
 .header-height{
   height: 10vh;
 }
-input,select{
-  padding-top: 0.4vw;
-  padding-bottom: 0.4vw;
+input,select,textarea{
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
   font-size: 0.9vw;
 }
 #select-option:hover{

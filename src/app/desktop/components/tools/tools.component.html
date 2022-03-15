@@ -1,0 +1,39 @@
+<div class="h-14 flex justify-between items-center pl-10 my-3">
+  <div class="flex gap-2">
+    <div class="flex justify-start items-center">
+      <span class="text-sm">All</span>
+      <span class="text-sm mx-1" style="white-space: nowrap;"> Labour(s)</span>
+    </div>
+    <input #input type="text" placeholder="Search"
+      class="appearance-none block w-full text-sm px-3 text-gray-500 border border-gray-400 rounded-sm  focus:outline-none  hover:border-green-900 focus:ring-green-900  focus:border-green-900"
+      style="padding-top: 0.3vw;padding-bottom: 0.3vw;">
+    <button class="flex border rounded-sm  ml-0.5 items-center  square-button mx-2 bg-gray-100 border-gray-400">
+      <svg [ngClass]="{'transition duration-1000 ease-in-out -rotate-180': rotate}" class="h-5 w-8 text-gray-800 p-0.5"
+        viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd"
+          d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+          clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="flex gap-2">
+    <button class="flex border rounded-sm items-center button bg-gray-100 border-gray-400 p-1">
+      <svg class="h-5 w-4  text-secondary-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+      </svg>
+      <span class="text-secondary-50 text-xs"> Edit</span>
+    </button>
+
+    <button
+      class="mr-4 border rounded-sm  button  bg-gray-100 border-gray-400 hover:opacity-90 text-tertiary-100 new-button">
+      <div (click)="addNuewForm()" class="flex justify-center items-center px-8">
+        <svg class="h-4 w-4 text-tertiary-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+        </svg>
+        <span class="text-xs">Add new</span>
+      </div>
+    </button>
+  </div>
+</div>
