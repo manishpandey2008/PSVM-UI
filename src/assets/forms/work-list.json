@@ -1,0 +1,65 @@
+{
+  "title": "Work List",
+  "width": "w-2/5",
+  "entity": "test",
+  "fields": [
+    {
+      "divider": "Information",
+      "fieldName": "firstName",
+      "label": "Fiest name",
+      "placeHolder": "Enter your name",
+      "maxLength": 30,
+      "required": true,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "email",
+      "label": "Email",
+      "placeHolder": "Enter your email",
+      "maxLength": 30,
+      "required": true,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "address",
+      "label": "Address",
+      "placeHolder": "Enter your address",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "textarea",
+      "colSpan": "col-span-2"
+    },
+    {
+      "fieldName": "date",
+      "label": "Date",
+      "placeHolder": "Enter your date",
+      "required": true,
+      "inputType": "date",
+      "colSpan": "col-span-1"
+    }
+  ],
+  "tableCols": [
+    {
+      "field": "firstName",
+      "header": "First Name"
+    },
+    {
+      "field": "lastName",
+      "header": "Last Name"
+    },
+    {
+      "field": "email",
+      "header": "Email"
+    },
+    {
+      "field": "phone",
+      "header": "Phone number"
+    },
+    {
+      "field": "address",
+      "header": "Address"
+    }
+  ]
+}
