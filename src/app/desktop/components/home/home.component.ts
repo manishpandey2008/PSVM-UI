@@ -7,14 +7,14 @@ import * as echarts from 'echarts';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit , AfterViewInit{
-
+  // dashboard/labour
   cardData=[
-    {title:"Laboure",styleCss:"text-green-900",url:"/department",svgType:"department",totalCount:10},
-    {title:"Ownar",styleCss:"text-blue-800",url:"/employee",svgType:"employee",totalCount:40},
-    {title:"Work List",styleCss:"text-fuchsia-900",url:"/file",svgType:"file",totalCount:200},
-    {title:"Claims",styleCss:"text-green-900",url:"/file",svgType:"file",totalCount:110},
-    {title:"Pending Claims",styleCss:"text-green-900",url:"/file",svgType:"file",totalCount:110},
-    {title:"Govt. Yojana",styleCss:"text-red-800",url:"/file",svgType:"file",totalCount:10}
+    {title:"Laboure",styleCss:"text-green-900",url:"/dashboard/labour",svgType:"department",totalCount:10},
+    {title:"Ownar",styleCss:"text-blue-800",url:"/dashboard/owner",svgType:"employee",totalCount:40},
+    {title:"Work List",styleCss:"text-fuchsia-900",url:"/dashboard/work-list",svgType:"file",totalCount:200},
+    {title:"Claims",styleCss:"text-green-900",url:"/dashboard/claim",svgType:"file",totalCount:110},
+    {title:"Pending Claims",styleCss:"text-green-900",url:"/dashboard/claim",svgType:"file",totalCount:110},
+    {title:"Govt. Yojana",styleCss:"text-red-800",url:"/dashboard/govt-yojana",svgType:"file",totalCount:10}
   ]
 
   chart!: echarts.EChartsType;

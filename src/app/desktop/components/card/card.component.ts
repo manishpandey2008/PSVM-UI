@@ -15,7 +15,6 @@ export class CardComponent implements OnInit {
   }
 
   onCardCliCK(url:string){
-    console.log(url)
   }
 
 
