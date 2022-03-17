@@ -3,7 +3,7 @@
 <div *ngIf="isView" class="w-full overflow-x-hidden h-full z-40 absolute" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;"> -->
   <div class="pt-20 fixed bg-white min-h-screen pl-2">
 
-    <div routerLink="/dashboard/home" (click)="changeTab(0)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[0],'text-gray-600':!selectedTab[0]}" class="flex cursor-pointer justify-start items-center border-l-8 hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6">
+    <div routerLink="/mobile/dashboard/home" (click)="changeTab(0)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[0],'text-gray-600':!selectedTab[0]}" class="flex cursor-pointer justify-start items-center border-l-8 hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6">
       <div class="pl-1">
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="home" class="svg-inline--fa fa-home w-6" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
           <path fill="currentColor" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div  routerLink="/dashboard/price-limit" (click)="changeTab(1)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[1],'text-gray-600':!selectedTab[1]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
+    <div  routerLink="/mobile/dashboard/price-limit" (click)="changeTab(1)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[1],'text-gray-600':!selectedTab[1]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
       <div class="pl-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-4">
           <path d="M.0022 64C.0022 46.33 14.33 32 32 32H288C305.7 32 320 46.33 320 64C320 81.67 305.7 96 288 96H231.8C241.4 110.4 248.5 126.6 252.4 144H288C305.7 144 320 158.3 320 176C320 193.7 305.7 208 288 208H252.4C239.2 266.3 190.5 311.2 130.3 318.9L274.6 421.1C288.1 432.2 292.3 452.2 282 466.6C271.8 480.1 251.8 484.3 237.4 474L13.4 314C2.083 305.1-2.716 291.5 1.529 278.2C5.774 264.1 18.09 256 32 256H112C144.8 256 173 236.3 185.3 208H32C14.33 208 .0022 193.7 .0022 176C.0022 158.3 14.33 144 32 144H185.3C173 115.7 144.8 96 112 96H32C14.33 96 .0022 81.67 .0022 64V64z"/>
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div routerLink="/dashboard/location" (click)="changeTab(2)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[2],'text-gray-600':!selectedTab[2]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
+    <div routerLink="/mobile/dashboard/location" (click)="changeTab(2)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[2],'text-gray-600':!selectedTab[2]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
       <div class="pl-1">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5" viewBox="0 0 384 512">
           <path d="M168.3 499.2C116.1 435 0 279.4 0 192C0 85.96 85.96 0 192 0C298 0 384 85.96 384 192C384 279.4 267 435 215.7 499.2C203.4 514.5 180.6 514.5 168.3 499.2H168.3zM192 256C227.3 256 256 227.3 256 192C256 156.7 227.3 128 192 128C156.7 128 128 156.7 128 192C128 227.3 156.7 256 192 256z"/>
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div routerLink="/dashboard/history"  (click)="changeTab(3)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[3],'text-gray-600':!selectedTab[3]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
+    <div routerLink="/mobile/dashboard/history"  (click)="changeTab(3)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[3],'text-gray-600':!selectedTab[3]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
       <div class="pl-1">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6">
           <path d="M256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C201.7 512 151.2 495 109.7 466.1C95.2 455.1 91.64 436 101.8 421.5C111.9 407 131.8 403.5 146.3 413.6C177.4 435.3 215.2 448 256 448C362 448 448 362 448 256C448 149.1 362 64 256 64C202.1 64 155 85.46 120.2 120.2L151 151C166.1 166.1 155.4 192 134.1 192H24C10.75 192 0 181.3 0 168V57.94C0 36.56 25.85 25.85 40.97 40.97L74.98 74.98C121.3 28.69 185.3 0 255.1 0L256 0zM256 128C269.3 128 280 138.7 280 152V246.1L344.1 311C354.3 320.4 354.3 335.6 344.1 344.1C335.6 354.3 320.4 354.3 311 344.1L239 272.1C234.5 268.5 232 262.4 232 256V152C232 138.7 242.7 128 256 128V128z"/>
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div routerLink="/dashboard/profile"  (click)="changeTab(4)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[4],'text-gray-600':!selectedTab[4]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
+    <div routerLink="/mobile/dashboard/profile"  (click)="changeTab(4)" [ngClass]="{'bg-blue-400 border-blue-800 text-gray-100': selectedTab[4],'text-gray-600':!selectedTab[4]}" class="flex cursor-pointer justify-start items-center border-l-8  hover:text-gray-800 hover:bg-blue-200 hover:border-blue-300 transition-colors ease-in-out delay-100 py-2 rounded-sm  border-white w-full pr-20 pl-6 mt-2">
       <div class="pl-1">
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user w-5" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
           <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path>

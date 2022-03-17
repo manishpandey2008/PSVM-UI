@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { LocalStoreService } from './local-store.service';
@@ -20,11 +20,11 @@ export class AuthService {
  }
 
  public isExpire():boolean{
+
    const token =this.localStore.getLocalStorageValue('token');
    if(token){
      let decoded:any = jwt_decode(token);
      let time=this.timeDifference.timeDifference(new Date(decoded.exp*1000),new Date())
-     // console.log("time==",time)
      if(time.day<0){
        const refreshToken =this.localStore.getLocalStorageValue('refreshToken');
        this.http.get(environment.apiEndpoint+"/user-service/refresh/"+refreshToken).subscribe((resp:any)=>{

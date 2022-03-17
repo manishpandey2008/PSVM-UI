@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { MobileGuirdService } from "../service/mobile-guird.service";
 import { HistoryComponent } from "./components/history/history.component";
 import { LocationComponent } from "./components/location/location.component";
 import { MobileDashboardComponent } from "./components/mobile-dashboard/mobile-dashboard.component";
@@ -13,6 +14,7 @@ const routes:Routes=[
   {component:FarmerLoginComponent,path:""},
   {path:"not-allowed",component:NotAllowedComponent},
   {path:"dashboard",component:MobileDashboardComponent,
+    canActivateChild:[MobileGuirdService],
     children:[
       {path:"home",component:MobileHomeComponent},
       {path:"price-limit",component:PriceLimitComponent},

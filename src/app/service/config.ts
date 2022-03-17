@@ -6,3 +6,5 @@ export const config: any = {
 
     menu_speed: 200
 }
+
+

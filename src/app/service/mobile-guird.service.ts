@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GuardService implements CanActivateChild{
+export class MobileGuirdService {
 
-  constructor(private auth:AuthService,private router:Router,private activatedRoute:ActivatedRoute) { }
+  constructor(private auth:AuthService,private router:Router) { }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     if(!this.auth.isAuthenticated() && !this.auth.isExpire()){

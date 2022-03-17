@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { DefaultPageComponent } from "../common/default-page/default-page.component";
+import { GuardService } from "../service/guard.service";
 import { ClaimsComponent } from "./components/claims/claims.component";
 import { GovtYojanaComponent } from "./components/govt-yojana/govt-yojana.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -11,6 +13,7 @@ import { DashboardHomeComponent } from "./dashboard-home/dashboard-home.componen
 
 const routes: Routes=[
   {path:"",component:DashboardHomeComponent,
+  canActivateChild:[GuardService],
   children: [
     {path:"home",component:HomeComponent},
     {path:"labour",component:LabourComponent},

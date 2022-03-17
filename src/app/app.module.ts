@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { DefaultPageComponent } from './common/default-page/default-page.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AppComponent,
     LoginComponent,
     TestPipe,
+    DefaultPageComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
