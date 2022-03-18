@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import jwt_decode from "jwt-decode";
 import { LocalStoreService } from './local-store.service';
 import { TimeDifferenceService } from './time-difference.service';
 
@@ -15,7 +16,6 @@ export class AuthService {
     const token = this.localStore.getLocalStorageValue('token');
     if(token){
      return true;
-     console.log("===============token===============",token)
     }
     return false;
  }
@@ -26,7 +26,6 @@ export class AuthService {
    if(token){
      let decoded:any = jwt_decode(token);
      let time=this.timeDifference.timeDifference(new Date(decoded.exp*1000),new Date())
-     console.log("===============time===============",time)
      if(time.day<0){
        this.localStore.removeLocalStorageValue('token')
      }
@@ -47,7 +46,7 @@ export class AuthService {
    const token = localStorage.getItem('token');
    if(token){
     var decoded:any = jwt_decode(token);
-    return decoded.roles.includes(claim);
+    return decoded.role.includes(claim);
    }
    return false;
  }
@@ -57,7 +56,7 @@ export class AuthService {
    const token = localStorage.getItem('token');
    if(token){
     var decoded:any = jwt_decode(token);
-    return decoded.roles;
+    return decoded.role;
    }
    return [];
  }
@@ -85,9 +84,5 @@ export class AuthService {
  //   const user = jwtHelper.decodeToken(token);
  //   return user.roles;
  // }
-}
-
-function jwt_decode(token: any): any {
-  throw new Error('Function not implemented.');
 }
 

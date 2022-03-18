@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiControlService } from '../service/api-control.service';
+import { AuthService } from '../service/auth.service';
 import { LocalStoreService } from '../service/local-store.service';
 
 @Component({
@@ -21,7 +22,10 @@ export class LoginComponent implements OnInit {
   })
 
 
-  constructor(private api:ApiControlService,private router:Router,private localStore:LocalStoreService) { }
+  constructor(private api:ApiControlService,
+              private router:Router,
+              private localStore:LocalStoreService,
+              private auth:AuthService) { }
 
   ngOnInit(): void {
   }
@@ -38,7 +42,13 @@ export class LoginComponent implements OnInit {
           this.api.post('api/user/authentication',this.formGroup.value).subscribe(resp=>{
             if(resp.access_token!==null){
               this.localStore.setLocalStorage("token",resp.access_token)
-              this.router.navigate(['/dashboard/home'])
+              if(this.auth.hasClaim("OWNER")){
+                this.router.navigate(['mobile','dashboard','home']);
+              }else if(this.auth.hasClaim("ADMIN") || this.auth.hasClaim("MANAGER")){
+                this.router.navigate(['/dashboard/home'])
+              }else{
+                this.router.navigate(['not-allowed'])
+              }
             }else{
             alert("Please login again")
             }

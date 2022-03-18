@@ -9,24 +9,24 @@
                     <div class="h-0.5 w-24 mx-auto bg-blue-600"></div>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mt-10" [formGroup]="formGroup">
-                  <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Firstname</label>
+                  <div class=" col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Firstname</label>
                     <input type="text" required formControlName="userFirstName" id="userFirstName" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
-                  <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Lastname</label>
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Lastname</label>
                     <input type="text" required formControlName="userLastName" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
-                  <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Email</label>
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Email</label>
                     <input type="text" required formControlName="userEmail" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
-                  <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Phone</label>
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Phone</label>
                     <input type="text" required formControlName="userPhone" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
-                  <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Role</label>
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Role</label>
                     <select [value]="" required formControlName="roles" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400">
                       <option value=""> Select role</option>
                       <option value="MANAGER">Manager</option>
@@ -34,11 +34,11 @@
                     </select>
                     <!-- <input type="text"  placeholder="Enter username " > -->
                   </div>
-                  <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Username</label>
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Username</label>
                     <input type="text" required formControlName="username" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
-                  <div class="mt-4  mx-8">
+                  <div class="col-span-2 mt-4 md:col-span-1 mx-12 md:mx-8">
                     <label for="" class="text-xs text-gray-800 text-left  block">Password</label>
                     <div class=" flex justify-between mt-1  items-center text-secondary-800 border hover:border-blue-400 focus:border-blue-400 rounded-sm text-sm mb-4">
                       <input required [type]="inputFormate" formControlName="password" class="outline-none text-gray-800 border-white w-full py-2.5 px-2 rounded-sm text-sm  focus:outline-none "  placeholder="Enter Password ">
@@ -55,7 +55,7 @@
                     <!-- <input type="text" class="email-input rounded-sm w-4/5 py-2.5 px-2 text-sm border border-gray-300  focus:outline-none " placeholder="Enter username " > -->
                   </div>
 
-                  <div class="mt-8 col-span-2 text-center mx-52 border-2 py-2 rounded-sm font-semibold  bg-blue-400 text-indigo-50 hover:bg-blue-500 hover:text-white  cursor-pointer">
+                  <div class="mt-8 col-span-2 text-center mx-24 border-2 py-2 rounded-sm font-semibold  bg-blue-400 text-indigo-50 hover:bg-blue-500 hover:text-white  cursor-pointer">
                     <button type="submit" [disabled]="!formGroup.valid" (click)="saveProfile()">Signup</button>
                   </div>
                 </div>
