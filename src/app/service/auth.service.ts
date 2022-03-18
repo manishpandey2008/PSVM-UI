@@ -15,6 +15,7 @@ export class AuthService {
     const token = this.localStore.getLocalStorageValue('token');
     if(token){
      return true;
+     console.log("===============token===============",token)
     }
     return false;
  }
@@ -25,14 +26,18 @@ export class AuthService {
    if(token){
      let decoded:any = jwt_decode(token);
      let time=this.timeDifference.timeDifference(new Date(decoded.exp*1000),new Date())
+     console.log("===============time===============",time)
      if(time.day<0){
-       const refreshToken =this.localStore.getLocalStorageValue('refreshToken');
-       this.http.get(environment.apiEndpoint+"/user-service/refresh/"+refreshToken).subscribe((resp:any)=>{
-         this.localStore.setLocalStorage("token",resp.token);
-         this.localStore.setLocalStorage("token",resp.refreshToken);
-       })
-       return true;
+       this.localStore.removeLocalStorageValue('token')
      }
+    //  if(time.day<0){
+    //    const refreshToken =this.localStore.getLocalStorageValue('refreshToken');
+    //    this.http.get(environment.apiEndpoint+"/user/refresh/"+refreshToken).subscribe((resp:any)=>{
+    //      this.localStore.setLocalStorage("token",resp.token);
+    //      this.localStore.setLocalStorage("token",resp.refreshToken);
+    //    })
+    //    return true;
+    //  }
      return true;
    }
    return false;

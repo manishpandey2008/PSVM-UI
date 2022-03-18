@@ -20,6 +20,21 @@ getHeader():HttpHeaders{
   return headers_object;
 }
 
+getHeaderWithoutToken():HttpHeaders{
+  var headers_object = new HttpHeaders();
+      headers_object.set('Content-Type', 'application/json');
+  return headers_object;
+}
+
+  postWithoutToken(path: string, entity: any): Observable<any> {
+    return this.http.post<HttpResponse<any>>(`${environment.apiEndpoint}/${path}`, entity,{ headers:this.getHeaderWithoutToken()});
+  }
+
+  getWithoutToken(path: string): Observable<any> {
+    return this.http.get<HttpResponse<any>>(`${environment.apiEndpoint}/${path}`,{ headers:this.getHeaderWithoutToken()});
+  }
+
+
   post(path: string, entity: any): Observable<any> {
     return this.http.post<HttpResponse<any>>(`${environment.apiEndpoint}/${path}`, entity,{ headers:this.getHeader()});
   }

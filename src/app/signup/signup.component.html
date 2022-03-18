@@ -8,34 +8,40 @@
                   <span class="text-lg text-blue-600">Signup</span>
                     <div class="h-0.5 w-24 mx-auto bg-blue-600"></div>
                 </div>
-                <div class="grid grid-cols-2 gap-4 mt-10">
+                <div class="grid grid-cols-2 gap-4 mt-10" [formGroup]="formGroup">
                   <div class="mt-4 ">
                     <label for="" class="text-xs text-gray-800 text-left ml-7 block">Firstname</label>
-                    <input type="text" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                    <input type="text" required formControlName="userFirstName" id="userFirstName" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
                   <div class="mt-4 ">
                     <label for="" class="text-xs text-gray-800 text-left ml-7 block">Lastname</label>
-                    <input type="text" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                    <input type="text" required formControlName="userLastName" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
                   <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Firstname</label>
-                    <input type="text" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Email</label>
+                    <input type="text" required formControlName="userEmail" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
                   <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Lastname</label>
-                    <input type="text" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Phone</label>
+                    <input type="text" required formControlName="userPhone" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
                   <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Firstname</label>
-                    <input type="text" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Role</label>
+                    <select [value]="" required formControlName="roles" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400">
+                      <option value=""> Select role</option>
+                      <option value="MANAGER">Manager</option>
+                      <option value="OWNER">Owner</option>
+                    </select>
+                    <!-- <input type="text"  placeholder="Enter username " > -->
                   </div>
                   <div class="mt-4 ">
-                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Lastname</label>
-                    <input type="text" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                    <label for="" class="text-xs text-gray-800 text-left ml-7 block">Username</label>
+                    <input type="text" required formControlName="username" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
                   </div>
                   <div class="mt-4  mx-8">
-                    <div class=" flex justify-between  items-center text-secondary-800 border hover:border-blue-400 focus:border-blue-400 rounded-sm text-sm mb-4">
-                      <input [type]="inputFormate" class="outline-none text-gray-800 border-white w-full py-2.5 px-2 rounded-sm text-sm  focus:outline-none "  placeholder="Enter Password ">
+                    <label for="" class="text-xs text-gray-800 text-left  block">Password</label>
+                    <div class=" flex justify-between mt-1  items-center text-secondary-800 border hover:border-blue-400 focus:border-blue-400 rounded-sm text-sm mb-4">
+                      <input required [type]="inputFormate" formControlName="password" class="outline-none text-gray-800 border-white w-full py-2.5 px-2 rounded-sm text-sm  focus:outline-none "  placeholder="Enter Password ">
                       <span class="w-12 cursor-pointer pl-3" (click)="changeFormate()">
                         <svg *ngIf="!viewPasswod" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" class="svg-inline--fa fa-eye w-5 h-5 mr-3" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                           <path fill="currentColor" d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"></path>
@@ -50,7 +56,7 @@
                   </div>
 
                   <div class="mt-8 col-span-2 text-center mx-52 border-2 py-2 rounded-sm font-semibold  bg-blue-400 text-indigo-50 hover:bg-blue-500 hover:text-white  cursor-pointer">
-                    <span class="">Signup</span>
+                    <button type="submit" [disabled]="!formGroup.valid" (click)="saveProfile()">Signup</button>
                   </div>
                 </div>
                 <div class="mt-10">
