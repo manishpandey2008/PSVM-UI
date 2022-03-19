@@ -17,6 +17,11 @@ export class JsonApiService {
   private getBaseUrl() {
     return location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/'
   }
+
+  public fetchStateDistrictList<T>(entity:string): Observable<T> {
+    return this.http.get<T>(this.getBaseUrl() +"assets/data/" + entity  + '.json');
+  }
+
 }
 
 

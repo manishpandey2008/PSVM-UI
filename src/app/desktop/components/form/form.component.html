@@ -35,7 +35,7 @@
                           <input *ngSwitchCase="'password'"  type="password" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm  focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
                           <textarea *ngSwitchCase="'textarea'" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300  h-32 py-2 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 " placeholder="{{field.placeHolder}}"></textarea>
 
-                         <ng-container *ngSwitchCase="'single-select'">
+                         <ng-container *ngSwitchCase="'select'">
                             <ng-container>
                               <select  class="appearance-none block w-full pl-3 border text-gray-500 border-gray-300 rounded-sm focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 ">
                                 <option [value]="null" id="select-option" class=" appearance-none focus:bg-secondary-300 hover:bg-gray-500" selected>{{field.placeHolder}}</option>

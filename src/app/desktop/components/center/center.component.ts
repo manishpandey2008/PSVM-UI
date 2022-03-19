@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { takeUntil } from 'rxjs';
-import { FieldEntity } from 'src/app/model/field.entity';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
 import { JsonApiService } from 'src/app/service/json-api.service';
@@ -9,11 +7,11 @@ import { FormComponent } from '../form/form.component';
 import { TableComponent } from '../table/table.component';
 
 @Component({
-  selector: 'app-labour',
-  templateUrl: './labour.component.html',
-  styleUrls: ['./labour.component.css']
+  selector: 'app-center',
+  templateUrl: './center.component.html',
+  styleUrls: ['./center.component.css']
 })
-export class LabourComponent implements OnInit {
+export class CenterComponent implements OnInit {
 
   @ViewChild(FormComponent) form!:FormComponent;
   @ViewChild(TableComponent) table!:TableComponent;
@@ -28,7 +26,7 @@ export class LabourComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.jsonService.fetch<FormEntity>('labour').subscribe(entity => {
+    this.jsonService.fetch<FormEntity>('center').subscribe(entity => {
       this.formEntity=entity;
       this.table.show(entity,this.data)
     })
@@ -38,7 +36,6 @@ export class LabourComponent implements OnInit {
 
   getLoabourData(){
     this.api.list("api/user/").subscribe(resp=>{
-      console.log("======================================",resp)
     });
   }
 

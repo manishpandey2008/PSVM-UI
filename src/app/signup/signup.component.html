@@ -1,7 +1,7 @@
 <div class="w-full h-screen backgroundColor">
-  <div class="flex justify-around items-center">
+  <div class="flex justify-around items-center" style="background-color: #abcdef;">
     <div class="text-center">
-      <div class="mt-10">
+      <div class="mt-10 pb-10">
         <div class="bg-white  rounded-md login-bord custom-shadow">
             <div class="">
                 <div class="pt-8 ">
@@ -32,8 +32,46 @@
                       <option value="MANAGER">Manager</option>
                       <option value="OWNER">Owner</option>
                     </select>
-                    <!-- <input type="text"  placeholder="Enter username " > -->
                   </div>
+
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Pin code</label>
+                    <input type="text" required formControlName="pinCode" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >
+                  </div>
+
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">State</label>
+                    <select [value]=""(change)="getDistrict()" required formControlName="state" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400">
+                      <option value=""> Select state</option>
+                      <ng-container *ngFor="let state of districtList">
+                          <option value="{{state.state}}">{{state.state}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">District</label>
+                    <select [value]="" required formControlName="district" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400">
+                      <option value=""> Select district</option>
+                      <ng-container *ngFor="let district of filterDistrict">
+                        <option value="{{district}}">{{district}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                  <div class="col-span-2 mt-4">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Address</label>
+                    <textarea name="" id="" cols="30" rows="4" formControlName="fullAddress" class="rounded-sm w-4/5 py-2.5 mt-1  text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400"></textarea>
+                  </div>
+
+                  <div class="col-span-2 mt-4 md:col-span-1">
+                    <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Center name</label>
+                    <select [value]="" required formControlName="centerId" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400">
+                      <option value=""> Select center</option>
+                      <option value="1">Ara</option>
+                      <option value="2">Kota</option>
+                    </select>
+                  </div>
+
                   <div class="col-span-2 mt-4 md:col-span-1">
                     <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Username</label>
                     <input type="text" required formControlName="username" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400" placeholder="Enter username " >

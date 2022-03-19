@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   login(){
      if(this.formGroup.valid){
       try{
-          this.api.post('api/user/authentication',this.formGroup.value).subscribe(resp=>{
+          this.api.postWithoutToken('api/user/authentication',this.formGroup.value).subscribe(resp=>{
             if(resp.access_token!==null){
               this.localStore.setLocalStorage("token",resp.access_token)
               if(this.auth.hasClaim("OWNER")){

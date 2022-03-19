@@ -14,15 +14,12 @@ export class ApiControlService {
 
 
 getHeader():HttpHeaders{
-  var headers_object = new HttpHeaders();
-      headers_object.set('Content-Type', 'application/json');
-      headers_object.set("Authorization", "Bearer " + this.localStore.getLocalStorageValue('token'));
+  let headers_object = new HttpHeaders( {'Content-Type':'application/json',"Authorization": "Bearer " + this.localStore.getLocalStorageValue('token')});
   return headers_object;
 }
 
 getHeaderWithoutToken():HttpHeaders{
-  var headers_object = new HttpHeaders();
-      headers_object.set('Content-Type', 'application/json');
+  var headers_object = new HttpHeaders({'Content-Type': 'application/json'});
   return headers_object;
 }
 
@@ -43,12 +40,12 @@ getHeaderWithoutToken():HttpHeaders{
     return this.http.post(`${environment.apiEndpoint}/${path}`, entity,{ headers:this.getHeader()});
   }
 
-  list(path: string): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiEndpoint}/${path}`,{ headers:this.getHeader()});
+  list(path: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiEndpoint}/${path}`,{ headers:this.getHeader()});
   }
 
   get(path: string,id:string): Observable<any> {
-    return this.http.get<any>(`${environment.apiEndpoint}/${path}/${id}`,{ headers:this.getHeader()});
+    return this.http.get<any>(`${environment.apiEndpoint}/${path}/${id}`,{headers:this.getHeader()});
   }
 
   createUpload(path: string, entity: any): Observable<HttpResponse<any>> {

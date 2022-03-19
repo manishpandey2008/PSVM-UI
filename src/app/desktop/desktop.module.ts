@@ -15,6 +15,7 @@ import { CardComponent } from './components/card/card.component';
 import { TableComponent } from './components/table/table.component';
 import { FormComponent } from './components/form/form.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { CenterComponent } from './components/center/center.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ToolsComponent } from './components/tools/tools.component';
     TableComponent,
     FormComponent,
     ToolsComponent,
+    CenterComponent,
   ],
   exports:[
   ],
