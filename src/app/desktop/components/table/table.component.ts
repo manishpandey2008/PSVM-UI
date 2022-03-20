@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { List } from 'echarts';
-import { LoginComponent } from 'src/app/login/login.component';
+import { ThisReceiver } from '@angular/compiler';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormEntity } from 'src/app/model/form-entity';
-import { TableEntity } from 'src/app/model/table-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
+import { FormComponent } from '../form/form.component';
+import { ViewFormateComponent } from '../view-formate/view-formate.component';
 
 @Component({
   selector: 'app-table',
@@ -11,6 +11,9 @@ import { ApiControlService } from 'src/app/service/api-control.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
+
+@ViewChild(FormComponent) form!:FormComponent;
+@ViewChild(ViewFormateComponent) viewFormateComponent!:ViewFormateComponent;
 
   header:any[]=[];
   data:any[]=[];
@@ -28,31 +31,54 @@ export class TableComponent implements OnInit {
     this.formEntity=field
     this.header=field.tableCols
     this.storeage(field.needStore)
-    this.getTableData()
   }
 
 
-  storeage(storeList:any[]){
-    storeList.forEach(e=>{
+  async storeage(storeList:any[]){
+   storeList.forEach(e=>{
       this.api.list(e.storeUrl).subscribe(resp=>{
         this.storeMap.set(e.storeName,resp);
       })
     })
+    this.getTableData()
   }
 
   getStoreData(fieldName:any,value:any){
     let list:any=this.storeMap.get(fieldName.store)
+    let result="None"
     list.forEach((e:any) => {
       if(e['id']==Number(value)){
-        return e[fieldName.neededField]
+        result=e[fieldName.neededField];
       }
-    });
+    })
+    return result
   }
 
   getTableData(){
-    this.api.list(this.formEntity.targetLink).subscribe(resp=>{
-      this.isShow=true
+    this.api.list(this.formEntity.targetLink).subscribe(async resp=>{
       this.data=resp
+      this.isShow=true
     })
   }
+
+  openEditForm(data:any){
+    this.form.show(true, this.formEntity,data)
+  }
+
+  openView(data:any){
+    this.viewFormateComponent.show(true, this.formEntity,data)
+  }
+
+  delete(data:any){
+    this.api.delete(this.formEntity.targetLink+"/"+data.id).subscribe(resp=>{
+      this.isShow=false
+      this.show(this.formEntity)
+    })
+  }
+
+  feedBack(event:any){
+    this.isShow=false
+    this.show(this.formEntity)
+  }
+
 }

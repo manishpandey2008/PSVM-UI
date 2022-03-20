@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
@@ -34,12 +34,13 @@ export class FormComponent implements OnInit {
   dataSet: Map<string, Option[]> = new Map();
   districtStateData=[]
 
+  @Output() feedBack=new EventEmitter;
+
+  formData:any;
+
   constructor(private fb:FormBuilder,private api:ApiControlService,private jsonApi:JsonApiService) { }
 
   ngOnInit(): void {
-
-
-
   }
 
 
@@ -50,6 +51,7 @@ export class FormComponent implements OnInit {
     this.buildForm(fields)
     this.dataSetup(fields)
     if(data){
+      this.formData=data;
       this.formGroup.patchValue(data)
     }
   }
@@ -106,11 +108,17 @@ export class FormComponent implements OnInit {
       alert("Your form data is not valid")
       return;
     }
+    if(this.formData){
+      this.formGroup.addControl('id',new FormControl(this.formData.id))
+    }
     this.api.post(this.formEntity.targetLink,this.formGroup.value).subscribe(resp=>{
       alert("Your form is submited successfully")
+      this.feedBack.emit(true)
       this.hide(false);
     })
   }
+
+
 
   hide(status:boolean) {
     this.isVisible = false;

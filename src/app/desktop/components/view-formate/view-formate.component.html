@@ -1,0 +1,51 @@
+<span class="top-0 right-0 left-0 bottom-0 bg-gray-500 absolute opacity-30 z-40 " *ngIf="isVisible" ></span>
+<div *ngIf="showOverlay" class="fixed inset-0 overflow-hidden z-50" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <div  class="absolute inset-0 overflow-hidden">
+    <div   class="absolute inset-0" aria-hidden="true"></div>
+
+    <div (click)="$event.stopPropagation()"  class="fixed inset-y-0 right-0 flex w-2/5"  >
+      <div class="w-screen" [@openClose]="isVisible ? 'open' : 'closed'" (@openClose.done)="animEnd($event)">
+        <div class="h-full flex flex-col bg-white shadow-xl overflow-hidden">
+              <div class="h-screen">
+                <header class="bg-secondary-100 flex py-4 px-14 justify-between items-center" style="height: 10vh;">
+                  <h2 class="text-sm xl:text-lg 2xl:text-2xl font-medium text-secondary-50">{{formEntity.title}}</h2>
+                  <button (click)="isVisible=!isVisible" class="text-gray-400 hover:text-gray-500 focus:outline-none p-1 rounded-full bg-secondary-350 hover:bg-secondary-300">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </header>
+                <div class="px-14 top-0">
+                  <main cdkScrollable class="overflow-y-auto grid mr-1 grid-cols-2 gap-x-10 my-4 main" *ngIf="isVisible"  style="height: fit-content;">
+                    <ng-container  *ngFor="let field of formEntity?.fields;index as i">
+
+                      <span  *ngIf="field.divider!==undefined" class="col-span-2 mb-2" [ngClass]="{'mt-4': i!==0}" style="font-size: 0.75vw;color:#605F5F;letter-spacing: 0.47px;">
+                        {{field.divider}}
+                        <hr style="color:#dddddd" class="mt-1">
+                      </span>
+
+                      <div ngClass="{{field.colSpan}}" class="mt-3">
+                        <label for="field.fieldName" class="block font-medium text-secondary-1000" style="font-size: 0.8vw;">{{field.label}}</label>
+                        <div [ngSwitch]="field.inputType">
+                          <span>{{formData[field.fieldName]}}</span>
+                      </div>
+                    </div>
+                    </ng-container >
+                  </main>
+                </div>
+
+                <footer class="pt-2 pb-6 px-14 flex gap-4 absolute bottom-0" >
+                  <button (click)="isVisible=!isVisible" type="button" class="py-1.5 bg-white text-gray-800 font-medium text-sm rounded-sm shadow-sm border border-gray-500 hover:opacity-90" style="width: 11vw;">
+                    Close
+                  </button>
+                </footer>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-2 w-1/2">
+
+  </div>
