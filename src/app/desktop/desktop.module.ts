@@ -16,6 +16,8 @@ import { TableComponent } from './components/table/table.component';
 import { FormComponent } from './components/form/form.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { CenterComponent } from './components/center/center.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GetDataPipe } from './pipes/get-data.pipe';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,15 @@ import { CenterComponent } from './components/center/center.component';
     FormComponent,
     ToolsComponent,
     CenterComponent,
+    GetDataPipe,
   ],
   exports:[
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ]
 })

@@ -15,7 +15,7 @@
                     </svg>
                   </button>
                 </header>
-                <div class="px-14 top-0">
+                <div class="px-14 top-0" [formGroup]="formGroup">
                   <main cdkScrollable class="overflow-y-auto grid mr-1 grid-cols-2 gap-x-10 my-4 main" *ngIf="isVisible"  style="height: fit-content;">
                     <ng-container  *ngFor="let field of formEntity?.fields;index as i">
 
@@ -29,17 +29,17 @@
                         <div [ngSwitch]="field.inputType">
                          <!-- [formGroup]="formGroup" -->
 
-                          <input *ngSwitchCase="'input'" type="text" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500" placeholder="{{field.placeHolder}}">
-                          <input *ngSwitchCase="'Number'"  type="number" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm focus:outline-none   hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
-                          <input *ngSwitchCase="'date'"  type="date" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm focus:outline-none   hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
-                          <input *ngSwitchCase="'password'"  type="password" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm  focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
-                          <textarea *ngSwitchCase="'textarea'" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300  h-32 py-2 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 " placeholder="{{field.placeHolder}}"></textarea>
+                          <input *ngSwitchCase="'input'" type="text" formControlName="{{field.fieldName}}" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500" placeholder="{{field.placeHolder}}">
+                          <input *ngSwitchCase="'Number'" onkeyup="this.value = this.value.replace(/[^0-9.]/g, '')"   type="text" formControlName="{{field.fieldName}}" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm focus:outline-none   hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
+                          <input *ngSwitchCase="'date'"  type="time" formControlName="{{field.fieldName}}" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm focus:outline-none   hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
+                          <input *ngSwitchCase="'password'"  type="password" formControlName="{{field.fieldName}}" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300 rounded-sm  focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500"  placeholder="{{field.placeHolder}}">
+                          <textarea *ngSwitchCase="'textarea'" formControlName="{{field.fieldName}}" name="{{field.fieldName}}" id="{{field.fieldName}}" class="appearance-none block w-full px-3 text-gray-500 border border-gray-300  h-32 py-2 focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 " placeholder="{{field.placeHolder}}"></textarea>
 
                          <ng-container *ngSwitchCase="'select'">
                             <ng-container>
-                              <select  class="appearance-none block w-full pl-3 border text-gray-500 border-gray-300 rounded-sm focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 ">
+                              <select (change)="chengedData(field)" formControlName="{{field.fieldName}}"  class="appearance-none block w-full pl-3 border text-gray-500 border-gray-300 rounded-sm focus:outline-none  hover:border-blue-500 focus:ring-blue-500  focus:border-blue-500 ">
                                 <option [value]="null" id="select-option" class=" appearance-none focus:bg-secondary-300 hover:bg-gray-500" selected>{{field.placeHolder}}</option>
-                                <!-- <option *ngFor="let option of data.get(field.fieldName)" value="{{option.value}}" class="appearance-none focus:bg-secondary-300 hover:bg-gray-500" >{{option.label}}</option> -->
+                                <option *ngFor="let option of dataSet.get(field.fieldName)" value="{{option.value}}" class="appearance-none focus:bg-secondary-300 hover:bg-gray-500" >{{option.label}}</option>
                               </select>
                             </ng-container>
                          </ng-container>
@@ -47,11 +47,13 @@
                           <div *ngSwitchDefault class="bg-gray-400 h-8" ngClass="{{field.colSpan}}">
                             {{field.fieldName}}
                           </div>
-                          <!-- <span *ngIf="formControls.get(field.fieldName)?.errors && showErrors" class="text-error-500 text-xs italic">
+
+                          <span *ngIf="formControls.get(field.fieldName)?.errors && showValidationErrors" class="text-error-500 text-xs italic">
                               Please enter <span class="lowercase">{{field.label}}</span>
-                          </span> -->
+                          </span>
                       </div>
                     </div>
+
                     </ng-container >
                   </main>
                 </div>

@@ -28,15 +28,11 @@ export class CenterComponent implements OnInit {
   ngOnInit(): void {
     this.jsonService.fetch<FormEntity>('center').subscribe(entity => {
       this.formEntity=entity;
-      this.table.show(entity,this.data)
+      this.table.show(entity)
     })
-
-    this.getLoabourData()
   }
 
   getLoabourData(){
-    this.api.list("api/user/").subscribe(resp=>{
-    });
   }
 
   addNew(){

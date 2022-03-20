@@ -5,6 +5,7 @@
         <table class="min-w-max w-full table-auto" *ngIf="isShow">
           <thead>
             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+              <th class="w-10"></th>
               <ng-container *ngFor="let item of header">
                 <th class="py-3 px-6 text-left">{{item.header}}</th>
               </ng-container>
@@ -12,15 +13,24 @@
             </tr>
           </thead>
           <tbody class="text-gray-600 text-sm font-light">
-            <ng-container *ngFor="let x of data">
+            <ng-container *ngFor="let x of data;let i=index">
               <tr class="border-b border-gray-200 hover:bg-gray-100">
+                <td>
+                  <span class="line-clamp-3" >
+                    <input (click)="selectedRow=i" [checked]="selectedRow===i"   id="comments"  name="comments" type="checkbox"class="focus:ring-0 h-4 w-4 mx-4 text-tertiary-700 border-secondary-250 rounded">
+                 </span>
+                </td>
                 <ng-container *ngFor="let fieldName of header">
                   <td class="py-3 px-6 text-left">
                     <div class="flex items-center">
+
                       <div class="mr-2" *ngIf="fieldName.field=='name'">
                         <img class="w-6 h-6 rounded-full" src="../../../../assets/image/farmer.jpg" />
                       </div>
-                      <span>{{x[fieldName.field]}}</span>
+
+                      <span *ngIf="!fieldName.store">{{x[fieldName.field]}}</span>
+
+                      <span *ngIf="fieldName.store">{{getStoreData(fieldName,x[fieldName.field])}}</span>
                     </div>
                   </td>
                 </ng-container>
