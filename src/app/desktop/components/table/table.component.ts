@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
+import { ConformationComponent } from '../conformation/conformation.component';
 import { FormComponent } from '../form/form.component';
 import { ViewFormateComponent } from '../view-formate/view-formate.component';
 
@@ -14,6 +15,7 @@ export class TableComponent implements OnInit {
 
 @ViewChild(FormComponent) form!:FormComponent;
 @ViewChild(ViewFormateComponent) viewFormateComponent!:ViewFormateComponent;
+@ViewChild(ConformationComponent) conformation!:ConformationComponent;
 
   header:any[]=[];
   data:any[]=[];
@@ -21,6 +23,7 @@ export class TableComponent implements OnInit {
   selectedRow=-1
   formEntity!:FormEntity
   storeMap:Map<string,any[]>=new Map()
+  deleteRequestData:any;
 
   constructor(private api:ApiControlService) { }
 
@@ -46,11 +49,13 @@ export class TableComponent implements OnInit {
   getStoreData(fieldName:any,value:any){
     let list:any=this.storeMap.get(fieldName.store)
     let result="None"
+   if(list && list!=null){
     list.forEach((e:any) => {
       if(e['id']==Number(value)){
         result=e[fieldName.neededField];
       }
     })
+   }
     return result
   }
 
@@ -69,11 +74,18 @@ export class TableComponent implements OnInit {
     this.viewFormateComponent.show(true, this.formEntity,data)
   }
 
-  delete(data:any){
-    this.api.delete(this.formEntity.targetLink+"/"+data.id).subscribe(resp=>{
-      this.isShow=false
-      this.show(this.formEntity)
-    })
+  deleteRequest(data:any){
+    this.deleteRequestData=data
+    this.conformation.show("Are you sure to remove this center :-"+data.centerName)
+  }
+
+  deleteItem(status:true){
+    if(status){
+      this.api.delete(this.formEntity.targetLink+"/"+this.deleteRequestData.id).subscribe(resp=>{
+        this.isShow=false
+        this.show(this.formEntity)
+      })
+    }
   }
 
   feedBack(event:any){

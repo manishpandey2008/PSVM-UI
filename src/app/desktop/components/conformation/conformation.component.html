@@ -1,0 +1,12 @@
+<div class="inset-y-0 inset-x-0 absolute bg-gray-400 opacity-90 z-30" *ngIf="isView" (click)="responseDialog(false)"></div>
+<div class="w-full">
+    <div class="w-96 pt-10 pb-6 z-50  bg-white box rounded-md fixed top-1/2 left-1/2" *ngIf="isView">
+        <div class="text-center px-10">
+            <span class="text-xs">{{message}}</span>
+        </div>
+        <div class="flex justify-center items-center my-5">
+            <span (click)="responseDialog(true)" class="px-14 py-1.5 text-xs rounded-sm text-white bg-blue-300 border border-tertiary-700 cursor-pointer mx-2">Yes</span>
+            <span (click)="responseDialog(false)" class="px-14 py-1.5 text-xs rounded-sm text-gray-700 border border-gray-300 cursor-pointer mx-2">No</span>
+        </div>
+    </div>
+</div>

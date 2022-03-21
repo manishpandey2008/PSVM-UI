@@ -18,6 +18,8 @@ import { ToolsComponent } from './components/tools/tools.component';
 import { CenterComponent } from './components/center/center.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetDataPipe } from './pipes/get-data.pipe';
+import { ViewFormateComponent } from './components/view-formate/view-formate.component';
+import { ConformationComponent } from './components/conformation/conformation.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { GetDataPipe } from './pipes/get-data.pipe';
     ToolsComponent,
     CenterComponent,
     GetDataPipe,
+    ViewFormateComponent,
+    ConformationComponent
   ],
   exports:[
   ],
