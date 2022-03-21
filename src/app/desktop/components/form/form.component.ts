@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
@@ -52,6 +52,12 @@ export class FormComponent implements OnInit {
     this.dataSetup(fields)
     if(data){
       this.formData=data;
+      this.formEntity.fields.forEach(e => {
+        if(e.inputType=='date'){
+          data[e.fieldName]=new Date(data[e.fieldName]).toISOString().substr(0, 10);
+        }
+      });
+
       this.formGroup.patchValue(data)
     }
   }

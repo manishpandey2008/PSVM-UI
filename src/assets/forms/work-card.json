@@ -1,0 +1,48 @@
+{
+  "title": "Work card",
+  "width": "w-2/5",
+  "entity": "work-card",
+  "targetLink":"api/chart/",
+  "fields": [
+    {
+      "divider": "Chart information",
+      "fieldName": "chartName",
+      "label": "Chart name",
+      "placeHolder": "Enter chart name",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "chartStartDate",
+      "label": "Released date",
+      "placeHolder": "Select released date",
+      "required": true,
+      "inputType": "date",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "centerId",
+      "label": "Center",
+      "placeHolder": "Select center",
+      "maxLength": 255,
+      "required": true,
+      "inputType": "select",
+      "colSpan": "col-span-1",
+      "apiData":"api/center/",
+      "selectLabel":"centerName"
+    },
+    {
+      "fieldName": "chartDescription",
+      "label": "Description",
+      "placeHolder": "Enter chart description",
+      "maxLength": 255,
+      "inputType": "textarea",
+      "colSpan": "col-span-2"
+    }
+  ],
+  "needStore":[
+
+  ]
+}

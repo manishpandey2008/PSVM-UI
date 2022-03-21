@@ -9,6 +9,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { LabourComponent } from "./components/labour/labour.component";
 import { OwnarComponent } from "./components/ownar/ownar.component";
 import { ProfileComponent } from "./components/profile/profile.component";
+import { WorkCardComponent } from "./components/work-card/work-card.component";
 import { WorkListComponent } from "./components/work-list/work-list.component";
 import { DashboardHomeComponent } from "./dashboard-home/dashboard-home.component";
 
@@ -21,7 +22,8 @@ const routes: Routes=[
     {path:"owner",component:OwnarComponent},
     {path:"govt-yojana",component:GovtYojanaComponent},
     {path:"claim",component:ClaimsComponent},
-    {path:"work-list",component:WorkListComponent},
+    {path:"work-list",component:WorkCardComponent},
+    {path:"work-list/:id",component:WorkListComponent},
     {path:"center",component:CenterComponent},
     {path:"profile",component:ProfileComponent}
   ]}

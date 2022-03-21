@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GetDataPipe } from './pipes/get-data.pipe';
 import { ViewFormateComponent } from './components/view-formate/view-formate.component';
 import { ConformationComponent } from './components/conformation/conformation.component';
+import { WorkCardComponent } from './components/work-card/work-card.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ConformationComponent } from './components/conformation/conformation.co
     CenterComponent,
     GetDataPipe,
     ViewFormateComponent,
-    ConformationComponent
+    ConformationComponent,
+    WorkCardComponent
   ],
   exports:[
   ],
