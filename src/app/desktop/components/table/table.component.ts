@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
@@ -24,15 +23,19 @@ export class TableComponent implements OnInit {
   formEntity!:FormEntity
   storeMap:Map<string,any[]>=new Map()
   deleteRequestData:any;
+  parentId:any;
+  parentLink:any;
 
   constructor(private api:ApiControlService) { }
 
   ngOnInit(): void {
   }
 
-  show(field:FormEntity,data?:any){
+  show(field:FormEntity,parentLink?:any,parentId?:any){
     this.formEntity=field
     this.header=field.tableCols
+    this.parentId=parentId
+    this.parentLink=parentLink
     this.storeage(field.needStore)
   }
 
@@ -43,7 +46,24 @@ export class TableComponent implements OnInit {
         this.storeMap.set(e.storeName,resp);
       })
     })
-    this.getTableData()
+    if(this.parentId){
+      this.getTableChieldData()
+    }else{
+      this.getTableData()
+    }
+  }
+  getTableData(){
+    this.api.list(this.formEntity.targetLink).subscribe(async resp=>{
+      this.data=resp
+      this.isShow=true
+    })
+  }
+
+  getTableChieldData(){
+    this.api.list(this.formEntity.targetLink+this.parentLink+this.parentId).subscribe(async resp=>{
+      this.data=resp
+      this.isShow=true
+    })
   }
 
   getStoreData(fieldName:any,value:any){
@@ -57,13 +77,6 @@ export class TableComponent implements OnInit {
     })
    }
     return result
-  }
-
-  getTableData(){
-    this.api.list(this.formEntity.targetLink).subscribe(async resp=>{
-      this.data=resp
-      this.isShow=true
-    })
   }
 
   openEditForm(data:any){

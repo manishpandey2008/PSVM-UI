@@ -1,65 +1,62 @@
 {
-  "title": "Work List",
+  "title": "Work list",
   "width": "w-2/5",
   "entity": "test",
+  "targetLink":"api/task/",
   "fields": [
     {
-      "divider": "Information",
-      "fieldName": "firstName",
-      "label": "Fiest name",
-      "placeHolder": "Enter your name",
-      "maxLength": 30,
+      "divider": "Work list information",
+      "fieldName": "taskName",
+      "label": "Task name",
+      "placeHolder": "Enter task name",
+      "maxLength": 50,
       "required": true,
       "inputType": "input",
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "email",
-      "label": "Email",
-      "placeHolder": "Enter your email",
-      "maxLength": 30,
-      "required": true,
+      "fieldName": "taskSubName",
+      "label": "Task subname",
+      "placeHolder": "Enter task subname",
+      "maxLength": 50,
       "inputType": "input",
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "address",
-      "label": "Address",
-      "placeHolder": "Enter your address",
-      "maxLength": 100,
-      "required": true,
+      "fieldName": "taskMinPrice",
+      "label": "Task min price",
+      "placeHolder": "Enter task price",
+      "maxLength": 5,
+      "inputType": "Number",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "taskDescription",
+      "label": "Description",
+      "placeHolder": "Enter task description",
+      "maxLength": 255,
       "inputType": "textarea",
       "colSpan": "col-span-2"
-    },
-    {
-      "fieldName": "date",
-      "label": "Date",
-      "placeHolder": "Enter your date",
-      "required": true,
-      "inputType": "date",
-      "colSpan": "col-span-1"
     }
+  ],
+  "needStore":[
   ],
   "tableCols": [
     {
-      "field": "firstName",
-      "header": "First Name"
+      "field": "taskName",
+      "header": "Task name"
     },
     {
-      "field": "lastName",
-      "header": "Last Name"
+      "field": "taskSubName",
+      "header": "Task subname"
     },
     {
-      "field": "email",
-      "header": "Email"
+      "field": "taskMinPrice",
+      "header": "Task min price"
     },
     {
-      "field": "phone",
-      "header": "Phone number"
-    },
-    {
-      "field": "address",
-      "header": "Address"
+      "field": "taskDescription",
+      "header": "Description"
     }
   ]
 }

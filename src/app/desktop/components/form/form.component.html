@@ -45,6 +45,8 @@
                             </ng-container>
                          </ng-container>
 
+                         <app-status *ngSwitchCase="'status'"  [formGroup]="formGroup" [field]="{fieldName:field.fieldName,firstVal:'active',secondVal:'inactive'}"></app-status>
+
                           <div *ngSwitchDefault class="bg-gray-400 h-8" ngClass="{{field.colSpan}}">
                             {{field.fieldName}}
                           </div>

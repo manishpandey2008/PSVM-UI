@@ -30,6 +30,7 @@
         </div>
         <hr class="mt-2 text-secondary-350">
         <div class="flex flex-row-reverse py-2">
+            <span class="px-2 py-1 hover:bg-red-200 rounded-full mx-3 text-xs cursor-pointer" (click)="deleteRequest(card)">Delete</span>
             <span class="px-2 py-1 hover:bg-gray-200 rounded-full mx-3 text-xs cursor-pointer" (click)="open(card)">Open</span>
             <span class="px-2 py-1 hover:bg-gray-200 rounded-full mx-3 text-xs cursor-pointer" (click)="edit(card)">Edit</span>
         </div>
@@ -38,3 +39,4 @@
 </div>
 
 <app-form></app-form>
+<app-conformation (response)="deleteItem($event)"></app-conformation>

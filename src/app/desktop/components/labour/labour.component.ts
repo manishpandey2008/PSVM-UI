@@ -30,7 +30,7 @@ export class LabourComponent implements OnInit {
   ngOnInit(): void {
     this.jsonService.fetch<FormEntity>('labour').subscribe(entity => {
       this.formEntity=entity;
-      this.table.show(entity,this.data)
+      this.table.show(entity)
     })
 
     this.getLoabourData()

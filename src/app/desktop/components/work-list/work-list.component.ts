@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormEntity } from 'src/app/model/form-entity';
+import { ApiControlService } from 'src/app/service/api-control.service';
 import { JsonApiService } from 'src/app/service/json-api.service';
 import { FormComponent } from '../form/form.component';
 import { TableComponent } from '../table/table.component';
@@ -15,25 +17,41 @@ export class WorkListComponent implements OnInit {
   @ViewChild(FormComponent) form!:FormComponent;
   @ViewChild(TableComponent) table!:TableComponent;
 
-  data=[{firstName:"Manish",lastName:"Pandey",phone:'9876543212',email:'smpandey.2008@gmail.com',address:"Kota"},
-  {firstName:"Manish",lastName:"Pandey",phone:'9876543212',email:'smpandey.2008@gmail.com',address:"Kota"},
-  {firstName:"Manish",lastName:"Pandey",phone:'9876543212',email:'smpandey.2008@gmail.com',address:"Kota"}]
+  data:any=[]
 
   formEntity!:FormEntity;
+  id:any;
+  workCardData:any;
+  isShow=false
 
-  constructor(private jsonService:JsonApiService,private http:HttpClient) {
-  }
+  constructor(private jsonService:JsonApiService,
+              private route:ActivatedRoute,
+              private api:ApiControlService
+          ) {}
 
   ngOnInit(): void {
+    this.id=this.route.snapshot.paramMap.get('id');
+    this.workListData()
     this.jsonService.fetch<FormEntity>('work-list').subscribe(entity => {
       this.formEntity=entity;
-      this.table.show(entity,this.data)
+    })
+  }
+
+  workListData(){
+    this.api.get("api/chart/"+this.id).subscribe(resp=>{
+      this.workCardData=resp
+      this.isShow=true
+      this.table.show(this.formEntity,"chart/",this.id)
     })
   }
 
   addNew(){
-    this.form.show(true,this.formEntity)
+    this.form.show(true,this.formEntity,undefined,this.id)
   }
 
-
+  feedBack(event:any){
+    if(event){
+      this.workListData()
+    }
+  }
 }

@@ -27,7 +27,7 @@ export class OwnarComponent implements OnInit {
   ngOnInit(): void {
     this.jsonService.fetch<FormEntity>('owner').subscribe(entity => {
       this.formEntity=entity;
-      this.table.show(entity,this.data)
+      this.table.show(entity)
     })
   }
 

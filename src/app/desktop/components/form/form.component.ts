@@ -33,6 +33,7 @@ export class FormComponent implements OnInit {
   formControls:Map<string, FormControl>=new Map<string, FormControl>();
   dataSet: Map<string, Option[]> = new Map();
   districtStateData=[]
+  parent:any;
 
   @Output() feedBack=new EventEmitter;
 
@@ -44,12 +45,13 @@ export class FormComponent implements OnInit {
   }
 
 
-  show(status:any,fields:FormEntity,data?:any){
+  show(status:any,fields:FormEntity,data?:any,parent?:any){
     this.formEntity=fields
     this.showOverlay = status;
     this.isVisible = status;
     this.buildForm(fields)
     this.dataSetup(fields)
+    this.parent=parent;
     if(data){
       this.formData=data;
       this.formEntity.fields.forEach(e => {
@@ -117,11 +119,20 @@ export class FormComponent implements OnInit {
     if(this.formData){
       this.formGroup.addControl('id',new FormControl(this.formData.id))
     }
-    this.api.post(this.formEntity.targetLink,this.formGroup.value).subscribe(resp=>{
-      alert("Your form is submited successfully")
-      this.feedBack.emit(true)
-      this.hide(false);
-    })
+    if(this.parent){
+      this.formGroup.addControl('chartId',new FormControl(this.parent))
+    }
+    if(this.formEntity.currentId){
+      this.formGroup.addControl(this.formEntity.currentId,new FormControl(this.parent))
+    }
+
+    console.log(this.formGroup.value)
+
+    // this.api.post(this.formEntity.targetLink,this.formGroup.value).subscribe(resp=>{
+    //   alert("Your form is submited successfully")
+    //   this.feedBack.emit(true)
+    //   this.hide(false);
+    // })
   }
 
 

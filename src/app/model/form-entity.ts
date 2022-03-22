@@ -9,4 +9,5 @@ export class FormEntity{
   fields:FieldEntity[]=[];
   tableCols:TableEntity[]=[];
   needStore:any[]=[];
+  currentId!:any;
 }

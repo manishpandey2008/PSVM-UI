@@ -26,7 +26,7 @@ export class GovtYojanaComponent implements OnInit {
   ngOnInit(): void {
     this.jsonService.fetch<FormEntity>('yojana').subscribe(entity => {
       this.formEntity=entity;
-      this.table.show(entity,this.data)
+      this.table.show(entity)
     })
   }
 

@@ -48,8 +48,8 @@ getHeaderWithoutToken():HttpHeaders{
     return this.http.delete<any>(`${environment.apiEndpoint}/${path}`,{ headers:this.getHeader()});
   }
 
-  get(path: string,id:string): Observable<any> {
-    return this.http.get<any>(`${environment.apiEndpoint}/${path}/${id}`,{headers:this.getHeader()});
+  get(path: string): Observable<any> {
+    return this.http.get<any>(`${environment.apiEndpoint}/${path}`,{headers:this.getHeader()});
   }
 
   createUpload(path: string, entity: any): Observable<HttpResponse<any>> {

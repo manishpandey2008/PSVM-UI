@@ -1,0 +1,12 @@
+<div class="mt-1" [formGroup]="formGroup" *ngIf="field.defaultValue!=='Draft'">
+  <div class="w-full flex justify-items-start ">
+      <div (click)="changeStatusVal(field.firstVal)" [ngClass]="{'bg-green-200': formGroup.value[field.fieldName]===field.firstVal}" class="status-div px-4 rounded-l-sm border flex justify-items-start items-center cursor-pointer border-gray-200 hover:bg-green-200  focus-within:bg-green-200">
+          <input type="radio" [value]="field.firstVal" formControlName="{{field.fieldName}}" id="active" [name]="field.fieldName" [ngClass]="{'text-green-200 ring-green-200': formGroup.value[field.fieldName]==field.firstVal}" class="form-radio h-3 w-3 text-green-200 focus:ring-green-200">
+          <label for="active" class="text-sm ml-2 text-secondary-200 capitalize">{{field.firstVal}}</label>
+      </div>
+      <div (click)="changeStatusVal(field.secondVal)" [ngClass]="{'bg-red-300': formGroup.value[field.fieldName]===field.secondVal}" class="status-div px-4 rounded-r-sm border border-l-0 flex justify-items-start items-center cursor-pointer border-gray-200 hover:bg-red-300  focus-within:bg-red-300">
+          <input type="radio" [value]="field.secondVal" formControlName="{{field.fieldName}}" [name]="field.fieldName" id="inactive"  [ngClass]="{'text-red-200 ring-red-200': formGroup.value[field.fieldName]==field.secondVal}" class="form-radio h-3 w-3 text-red-200 focus:ring-red-200">
+          <label for="inactive" class="text-sm ml-2 text-secondary-200 capitalize">{{field.secondVal}}</label>
+      </div>
+  </div>
+</div>

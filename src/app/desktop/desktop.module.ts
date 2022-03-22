@@ -17,10 +17,10 @@ import { FormComponent } from './components/form/form.component';
 import { ToolsComponent } from './components/tools/tools.component';
 import { CenterComponent } from './components/center/center.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GetDataPipe } from './pipes/get-data.pipe';
 import { ViewFormateComponent } from './components/view-formate/view-formate.component';
 import { ConformationComponent } from './components/conformation/conformation.component';
 import { WorkCardComponent } from './components/work-card/work-card.component';
+import { StatusComponent } from './components/status/status.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +39,10 @@ import { WorkCardComponent } from './components/work-card/work-card.component';
     FormComponent,
     ToolsComponent,
     CenterComponent,
-    GetDataPipe,
     ViewFormateComponent,
     ConformationComponent,
-    WorkCardComponent
+    WorkCardComponent,
+    StatusComponent
   ],
   exports:[
   ],

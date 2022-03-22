@@ -1,65 +1,71 @@
 {
   "title": "Yojana",
   "width": "w-2/5",
-  "entity": "test",
+  "entity": "yojana",
+  "targetLink":"api/yojana/",
+  "currentId":"centerId",
   "fields": [
     {
-      "divider": "Information",
-      "fieldName": "firstName",
-      "label": "Fiest name",
-      "placeHolder": "Enter your name",
-      "maxLength": 30,
+      "divider": "Yojana information",
+      "fieldName": "yojanaName",
+      "label": "Yojana name",
+      "placeHolder": "Enter yojana name",
+      "maxLength": 50,
       "required": true,
       "inputType": "input",
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "email",
-      "label": "Email",
-      "placeHolder": "Enter your email",
-      "maxLength": 30,
+      "fieldName": "yojanaLastDate",
+      "label": "Yojana last date",
+      "placeHolder": "Enter last date",
       "required": true,
-      "inputType": "input",
+      "inputType": "date",
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "address",
-      "label": "Address",
-      "placeHolder": "Enter your address",
-      "maxLength": 100,
+      "fieldName": "yojanaDescription",
+      "label": "Description",
+      "placeHolder": "Enter yojana description",
       "required": true,
+      "maxLength": 255,
       "inputType": "textarea",
       "colSpan": "col-span-2"
     },
     {
-      "fieldName": "date",
-      "label": "Date",
-      "placeHolder": "Enter your date",
-      "required": true,
-      "inputType": "date",
-      "colSpan": "col-span-1"
+      "fieldName": "yojanaLink",
+      "label": "Yojana link",
+      "placeHolder": "Enter yojana link",
+      "maxLength": 255,
+      "inputType": "textarea",
+      "colSpan": "col-span-2"
+    },
+    {
+      "fieldName": "yojanaStatus",
+      "label": "Yojana status",
+      "placeHolder": "Enter yojana link",
+      "inputType": "status",
+      "colSpan": "col-span-2"
     }
+  ],
+  "needStore":[
   ],
   "tableCols": [
     {
-      "field": "firstName",
-      "header": "First Name"
+      "field": "taskName",
+      "header": "Task name"
     },
     {
-      "field": "lastName",
-      "header": "Last Name"
+      "field": "taskSubName",
+      "header": "Task subname"
     },
     {
-      "field": "email",
-      "header": "Email"
+      "field": "taskMinPrice",
+      "header": "Task min price"
     },
     {
-      "field": "phone",
-      "header": "Phone number"
-    },
-    {
-      "field": "address",
-      "header": "Address"
+      "field": "taskDescription",
+      "header": "Description"
     }
   ]
 }

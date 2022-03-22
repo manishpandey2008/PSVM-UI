@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
 import { JsonApiService } from 'src/app/service/json-api.service';
+import { ConformationComponent } from '../conformation/conformation.component';
 import { FormComponent } from '../form/form.component';
 
 @Component({
@@ -14,10 +15,12 @@ import { FormComponent } from '../form/form.component';
 export class WorkCardComponent implements OnInit {
 
   @ViewChild(FormComponent) form!:FormComponent;
+  @ViewChild(ConformationComponent) conformation!:ConformationComponent;
 
   formEntity!: FormEntity;
 
   data:any=[]
+  deleteRequestData:any;
 
   constructor(private jsonService:JsonApiService,
               private http:HttpClient,
@@ -47,5 +50,18 @@ export class WorkCardComponent implements OnInit {
 
   addNew(){
     this.form.show(true,this.formEntity)
+  }
+
+  deleteRequest(card:any){
+    this.deleteRequestData=card
+    this.conformation.show("Are you sure to remove this work card :-"+card.chartName)
+  }
+
+  deleteItem(status:boolean){
+   if(status){
+    this.api.delete(this.formEntity.targetLink+"/"+this.deleteRequestData.id).subscribe(resp=>{
+        this.getCradData()
+    })
+   }
   }
 }
