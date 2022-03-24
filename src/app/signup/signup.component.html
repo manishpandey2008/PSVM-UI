@@ -67,8 +67,7 @@
                     <label for="" class="text-xs text-gray-800 text-left ml-12 md:ml-7 block">Center name</label>
                     <select [value]="" required formControlName="centerId" class="rounded-sm w-4/5 py-2.5 mt-1 px-2 text-sm border border-gray-300 text-gray-800  focus:outline-none hover:border-blue-400 focus:border-blue-400">
                       <option value=""> Select center</option>
-                      <option value="1">Ara</option>
-                      <option value="2">Kota</option>
+                      <option value="{{center.id}}" *ngFor="let center of allcenterList">{{center.centerName}}</option>
                     </select>
                   </div>
 

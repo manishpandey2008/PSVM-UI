@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { FormEntity } from 'src/app/model/form-entity';
 import { ApiControlService } from 'src/app/service/api-control.service';
 import { JsonApiService } from 'src/app/service/json-api.service';
+import { LocalStoreService } from 'src/app/service/local-store.service';
 import { Option } from '../../../model/option'
 
 @Component({
@@ -39,7 +40,8 @@ export class FormComponent implements OnInit {
 
   formData:any;
 
-  constructor(private fb:FormBuilder,private api:ApiControlService,private jsonApi:JsonApiService) { }
+  constructor(private api:ApiControlService,private jsonApi:JsonApiService,
+              private local:LocalStoreService) { }
 
   ngOnInit(): void {
   }
@@ -110,6 +112,8 @@ export class FormComponent implements OnInit {
     }
   }
 
+
+
   saveForm(){
     if(!this.formGroup.valid){
       this.showValidationErrors=true
@@ -123,16 +127,16 @@ export class FormComponent implements OnInit {
       this.formGroup.addControl('chartId',new FormControl(this.parent))
     }
     if(this.formEntity.currentId){
-      this.formGroup.addControl(this.formEntity.currentId,new FormControl(this.parent))
+      this.formGroup.addControl(this.formEntity.currentId,new FormControl(this.local.getLocalStorageObject("centerId")))
     }
 
     console.log(this.formGroup.value)
 
-    // this.api.post(this.formEntity.targetLink,this.formGroup.value).subscribe(resp=>{
-    //   alert("Your form is submited successfully")
-    //   this.feedBack.emit(true)
-    //   this.hide(false);
-    // })
+    this.api.post(this.formEntity.targetLink,this.formGroup.value).subscribe(resp=>{
+      alert("Your form is submited successfully")
+      this.feedBack.emit(true)
+      this.hide(false);
+    })
   }
 
 

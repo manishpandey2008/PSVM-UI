@@ -48,7 +48,6 @@
       "label": "Manager username",
       "placeHolder": "Select user",
       "maxLength": 40,
-      "required": true,
       "inputType": "select",
       "colSpan": "col-span-1",
       "apiData":"api/user/",

@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
   viewPasswod=true
   districtList:any;
   filterDistrict:any;
+  allcenterList:any;
 
   formGroup=new FormGroup({
     userFirstName:new FormControl('',[Validators.required,Validators.maxLength(30)]),
@@ -47,6 +48,9 @@ export class SignupComponent implements OnInit {
   getAllData(){
     this.jsonApiService.fetchStateDistrictList("district").subscribe((resp:any)=>{
       this.districtList=sortBy(resp.states, (o) => +o.state);
+    })
+    this.api.list("api/center/").subscribe(resp=>{
+      this.allcenterList=resp
     })
   }
 

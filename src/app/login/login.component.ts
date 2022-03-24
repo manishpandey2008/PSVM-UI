@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
           this.api.postWithoutToken('api/user/authentication',this.formGroup.value).subscribe(resp=>{
             if(resp.access_token!==null){
               this.localStore.setLocalStorage("token",resp.access_token)
+              this.storeUserDetails()
               if(this.auth.hasClaim("OWNER")){
                 this.router.navigate(['mobile','dashboard','home']);
               }else if(this.auth.hasClaim("ADMIN") || this.auth.hasClaim("MANAGER")){
@@ -57,5 +58,11 @@ export class LoginComponent implements OnInit {
             alert("Please login again")
         }
      }
+  }
+
+  storeUserDetails(){
+    this.api.get('api/user/username/'+this.formGroup.value['username']).subscribe(resp=>{
+    this.localStore.setLocalStorage("centerId",resp.centerId)
+    })
   }
 }

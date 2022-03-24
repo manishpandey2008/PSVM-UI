@@ -52,20 +52,26 @@
   ],
   "tableCols": [
     {
-      "field": "taskName",
-      "header": "Task name"
+      "field": "yojanaName",
+      "header": "Yojana name"
     },
     {
-      "field": "taskSubName",
-      "header": "Task subname"
+      "field": "yojanaLastDate",
+      "header": "Yojana last date",
+      "pipe":"date"
     },
     {
-      "field": "taskMinPrice",
-      "header": "Task min price"
-    },
-    {
-      "field": "taskDescription",
+      "field": "yojanaDescription",
       "header": "Description"
+    },
+    {
+      "field": "yojanaLink",
+      "header": "Yojana link"
+    },
+    {
+      "field": "yojanaStatus",
+      "header": "Status",
+      "pipe":"status"
     }
   ]
 }

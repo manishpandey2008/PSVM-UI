@@ -28,7 +28,9 @@
                         <img class="w-6 h-6 rounded-full" src="../../../../assets/image/farmer.jpg" />
                       </div>
 
-                      <span *ngIf="!fieldName.store">{{x[fieldName.field]}}</span>
+                      <span *ngIf="!fieldName.store && !fieldName.pipe">{{x[fieldName.field]}}</span>
+
+                      <span *ngIf="fieldName.pipe=='date'">{{x[fieldName.field] | date:"mI"}}</span>
 
                       <span *ngIf="fieldName.store">{{getStoreData(fieldName,x[fieldName.field] )}}</span>
                     </div>
