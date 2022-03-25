@@ -94,7 +94,7 @@ export class TableComponent implements OnInit {
 
   deleteItem(status:true){
     if(status){
-      this.api.delete(this.formEntity.targetLink+"/"+this.deleteRequestData.id).subscribe(resp=>{
+      this.api.delete(this.formEntity.targetLink+this.deleteRequestData.id).subscribe(resp=>{
         this.isShow=false
         this.show(this.formEntity)
       })

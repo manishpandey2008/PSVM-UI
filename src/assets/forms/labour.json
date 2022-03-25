@@ -2,31 +2,69 @@
   "title": "Labour",
   "width": "w-2/5",
   "entity": "test",
-  "targetLink":"api/center/",
+  "targetLink":"api/user/",
+  "currentId":"centerId",
+  "roles":"LOBOUR",
   "fields": [
     {
-      "divider": "Center information",
-      "fieldName": "centerName",
-      "label": "Center name",
-      "placeHolder": "Enter center name",
+      "divider": "Labour information",
+      "fieldName": "userFirstName",
+      "label": "First name",
+      "placeHolder": "Enter first name",
       "maxLength": 100,
       "required": true,
       "inputType": "input",
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "centerState",
+      "fieldName": "userLastName",
+      "label": "First name",
+      "placeHolder": "Enter last name",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "userEmail",
+      "label": "Email",
+      "placeHolder": "Enter email",
+      "maxLength": 100,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "userPhone",
+      "label": "phone",
+      "placeHolder": "Enter phone number",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "Number",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "pinCode",
+      "label": "Pincode",
+      "placeHolder": "Enter Pincode",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "Number",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "state",
       "label": "Center state",
       "placeHolder": "Select center state",
       "maxLength": 50,
       "inputType": "select",
+      "required": true,
       "colSpan": "col-span-1",
       "jsonData":"district",
       "selectLabel":"",
-      "changed":"centerDistrict"
+      "changed":"district"
     },
     {
-      "fieldName": "centerDistrict",
+      "fieldName": "district",
       "label": "Center district",
       "placeHolder": "Select center district",
       "maxLength": 50,
@@ -35,7 +73,7 @@
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "centerFullAddress",
+      "fieldName": "fullAddress",
       "label": "Address",
       "placeHolder": "Enter address",
       "maxLength": 150,
@@ -44,90 +82,55 @@
       "colSpan": "col-span-2"
     },
     {
-      "fieldName": "managerUsername",
-      "label": "Manager username",
+      "fieldName": "username",
+      "label": "Username",
       "placeHolder": "Select user",
       "maxLength": 40,
-      "inputType": "select",
+      "inputType": "input",
       "colSpan": "col-span-1",
       "apiData":"api/user/",
-      "selectLabel":"username"
-    },
-    {
-      "fieldName": "centerHelplineNumber",
-      "label": "Helpline number",
-      "placeHolder": "Enter helpline number",
-      "maxLength": 10,
-      "required": true,
-      "inputType": "Number",
-      "colSpan": "col-span-1"
-    },
-    {
-      "fieldName": "centerEmail",
-      "label": "Email",
-      "placeHolder": "Enter center email",
-      "maxLength": 50,
-      "required": true,
-      "inputType": "input",
-      "colSpan": "col-span-1"
-    },
-    {
-      "fieldName": "centerStartingTime",
-      "label": "Starting time",
-      "placeHolder": "Enter starting time",
-      "required": true,
-      "inputType": "time",
-      "colSpan": "col-span-1"
-    },
-    {
-      "fieldName": "centerCloseTime",
-      "label": "Close time",
-      "placeHolder": "Enter close time",
-      "required": true,
-      "inputType": "time",
-      "colSpan": "col-span-1"
+      "selectLabel":""
     }
   ],
   "needStore":[
     {
-      "storeName": "user",
-      "storeUrl": "api/user/"
+      "storeName": "center",
+      "storeUrl": "api/center/"
     }
   ],
   "tableCols": [
     {
-      "field": "centerName",
-      "header": "Center name"
+      "field": "userFirstName",
+      "header": "Name"
     },
     {
-      "field": "managerUsername",
-      "header": "Manager",
-      "store":"user",
-      "neededField":"username"
+      "field": "roles",
+      "header": "Role",
+      "pipe":"role"
     },
     {
-      "field": "centerState",
-      "header": "Center state"
+      "field": "username",
+      "header": "Username"
     },
     {
-      "field": "centerDistrict",
-      "header": "Center district"
+      "field": "userEmail",
+      "header": "Email"
     },
     {
-      "field": "centerFullAddress",
+      "field": "userPhone",
+      "header": "Phone"
+    },
+    {
+      "field": "state",
+      "header": "State"
+    },
+    {
+      "field": "district",
+      "header": "District"
+    },
+    {
+      "field": "fullAddress",
       "header": "Address"
-    },
-    {
-      "field": "centerEmail",
-      "header": "Center email"
-    },
-    {
-      "field": "centerStartingTime",
-      "header": "Opening time"
-    },
-    {
-      "field": "centerCloseTime",
-      "header": "Closeing time"
     }
   ]
 }

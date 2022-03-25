@@ -10,4 +10,5 @@ export class FormEntity{
   tableCols:TableEntity[]=[];
   needStore:any[]=[];
   currentId!:any;
+  roles!:any;
 }

@@ -129,6 +129,9 @@ export class FormComponent implements OnInit {
     if(this.formEntity.currentId){
       this.formGroup.addControl(this.formEntity.currentId,new FormControl(this.local.getLocalStorageObject("centerId")))
     }
+    if(this.formEntity.roles){
+      this.formGroup.addControl('roles',new FormControl([{name:this.formEntity.roles}]))
+    }
 
     console.log(this.formGroup.value)
 

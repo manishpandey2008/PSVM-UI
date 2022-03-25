@@ -64,7 +64,7 @@ export class SignupComponent implements OnInit {
   {
     if(this.formGroup.valid){
       this.formGroup.value.roles=[{"name":this.formGroup.value.roles}]
-      this.api.postWithoutToken('api/user/new',this.formGroup.value).subscribe(e=>{
+      this.api.postWithoutToken('api/user/',this.formGroup.value).subscribe(e=>{
         console.log(this.formGroup.value)
         this.router.navigate(["login"])
       })

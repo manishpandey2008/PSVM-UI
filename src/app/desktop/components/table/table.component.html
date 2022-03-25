@@ -14,7 +14,7 @@
           </thead>
           <tbody class="text-gray-600 text-sm font-light">
             <ng-container *ngFor="let x of data;let i=index">
-              <tr class="border-b border-gray-200 hover:bg-gray-100">
+              <tr class="border-b border-gray-200 hover:bg-gray-100" >
                 <td>
                   <span class="line-clamp-3" >
                     <input (click)="selectedRow=i" [checked]="selectedRow===i"   id="comments"  name="comments" type="checkbox"class="focus:ring-0 h-4 w-4 mx-4 text-tertiary-700 border-secondary-250 rounded">
@@ -31,6 +31,8 @@
                       <span *ngIf="!fieldName.store && !fieldName.pipe">{{x[fieldName.field]}}</span>
 
                       <span *ngIf="fieldName.pipe=='date'">{{x[fieldName.field] | date:"mI"}}</span>
+
+                      <span *ngIf="fieldName.pipe=='role'">{{x[fieldName.field][0].name }}</span>
 
                       <span *ngIf="fieldName.store">{{getStoreData(fieldName,x[fieldName.field] )}}</span>
                     </div>
