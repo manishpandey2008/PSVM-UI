@@ -16,6 +16,7 @@ export class MobileTopNavComponent implements OnInit {
 
 notificationToggle=false
 user=false
+showBackround=false;
 
   constructor() { }
 
@@ -28,11 +29,20 @@ user=false
 
   viewNotification(){
     this.notificationToggle=!this.notificationToggle
+    this.showBackround=!this.showBackround
     this.notification.show(this.notificationToggle)
   }
 
   viewUser(){
     this.user=!this.user
+    this.showBackround=!this.showBackround
     this.userDropdown.show(this.user)
+  }
+  hideNotification(){
+    this.notificationToggle=false;
+    this.user=false;
+    this.showBackround=false;
+    this.userDropdown.show(false)
+    this.notification.show(false)
   }
 }

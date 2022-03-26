@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
+import { ApiControlService } from 'src/app/service/api-control.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -18,14 +20,36 @@ export class HomeComponent implements OnInit , AfterViewInit{
   ]
 
   chart!: echarts.EChartsType;
+  labourCount:any=0;
+  ownerCount:any=0;
+  centerData:any;
 
-  constructor() { }
+  constructor(private api:ApiControlService) { }
 
   ngAfterViewInit(): void {
     this.createChart()
   }
 
   ngOnInit(): void {
+    this.getValue()
+  }
+
+  getValue(){
+    this.api.get("center").subscribe(resp=>{
+      this.centerData=resp
+      this.cardData[2].totalCount=resp.totalWorkList
+      this.cardData[5].totalCount=resp.totalYojana
+    })
+    this.api.get("api/user/").subscribe(resp=>{
+      resp.forEach((e:any)=>{
+          e.roles.forEach((role:any)=>{
+              if(role.name=="LOBOUR"){this.labourCount+=1}
+              if(role.name=="OWNER"){this.ownerCount+=1}
+          })
+      })
+      this.cardData[0].totalCount=this.labourCount
+      this.cardData[1].totalCount=this.ownerCount
+    })
   }
 
   option = {
@@ -84,7 +108,5 @@ export class HomeComponent implements OnInit , AfterViewInit{
     this.chart.resize();
   }
 
-  getValue(){
 
-  }
 }

@@ -16,6 +16,7 @@ import { FormComponent } from './components/form/form.component';
 import { LocationComponent } from './components/location/location.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -42,7 +43,7 @@ import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.
   ],
   imports: [
     CommonModule,
-    MobileRoutingModule
+    MobileRoutingModule,FormsModule,ReactiveFormsModule
   ]
 })
 export class MobileModule { }

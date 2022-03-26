@@ -61,7 +61,7 @@ export class AuthService {
    return [];
  }
 
- getUserUuid():string{
+ getUserName():string{
    const token = localStorage.getItem('token');
    if(token){
     var decoded:any = jwt_decode(token);
