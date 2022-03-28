@@ -26,6 +26,8 @@ export class SignupComponent implements OnInit {
     pinCode:new FormControl('',[Validators.required,Validators.maxLength(6),Validators.minLength(6)]),
     state:new FormControl('',[Validators.required,Validators.maxLength(30)]),
     district:new FormControl('',[Validators.required,Validators.maxLength(30)]),
+    village:new FormControl('',[Validators.required,Validators.maxLength(100)]),
+    post:new FormControl('',[Validators.required,Validators.maxLength(100)]),
     fullAddress:new FormControl('',[Validators.required,Validators.maxLength(30)]),
     centerId:new FormControl('',[Validators.required,Validators.maxLength(5)]),
     roles:new FormControl([{}],Validators.required),
@@ -64,16 +66,13 @@ export class SignupComponent implements OnInit {
   {
     if(this.formGroup.valid){
       this.formGroup.value.roles=[{"name":this.formGroup.value.roles}]
-      this.api.postWithoutToken('api/user/',this.formGroup.value).subscribe(e=>{
-        console.log(this.formGroup.value)
+      this.api.postWithoutToken('api/user/new',this.formGroup.value).subscribe(e=>{
         this.router.navigate(["login"])
       })
     }
   }
 
-
   changeFormate(){
-    console.log(this.viewPasswod)
     if(this.viewPasswod){this.viewPasswod=false;this.inputFormate="text"}
     else{this.viewPasswod=true;this.inputFormate="password"}
   }

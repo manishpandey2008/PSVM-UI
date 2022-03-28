@@ -12,7 +12,7 @@ export class UserDropdownComponent implements OnInit {
   isLogin=true
   showMenu=false
 
-  constructor(private local:LocalStoreService,private router:Router) { }
+  constructor(private router:Router,private local:LocalStoreService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +23,7 @@ export class UserDropdownComponent implements OnInit {
 
   logout(){
     this.local.removeLocalStorageValue("token")
-    this.router.navigate(["/mobile"])
+    this.router.navigate(["/login"])
   }
 
 }

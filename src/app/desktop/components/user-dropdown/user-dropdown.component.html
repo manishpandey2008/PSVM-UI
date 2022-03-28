@@ -1,5 +1,5 @@
 
-<div class="w-1/2 py-2 bg-white absolute shadow right-0 top-0 z-50 mr-7 rounded mt-14" *ngIf="showMenu" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;">
+<div class="w-1/6 py-2 bg-white absolute shadow right-0 top-0 z-50 mr-7 rounded mt-14" *ngIf="showMenu" style="box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;">
     <div class="w-4 h-4 bg-white transform rotate-45 float-right -mt-4 mr-2.5"></div>
     <div class="mx-3 h-full my-2" *ngIf="isLogin">
         <div class="w-full py-0.5 cursor-pointer flex justify-start">
@@ -30,12 +30,12 @@
           <span class="text-xs px-2">Company profile</span>
         </div> -->
         <!-- <hr class="w-full text-secondary-10 my-0.5"> -->
-        <div (click)="logout()" class="w-full bg-red-400 hover:opacity-90 py-1 rounded cursor-pointer mt-2">
+        <div  (click)="logout()" class="w-full bg-red-400 hover:opacity-90 py-1 rounded cursor-pointer mt-2">
           <span class="text-xs px-2 text-white" >Logout</span>
         </div>
     </div>
     <div class="mx-3 h-full my-2" *ngIf="!isLogin">
-      <div  class="w-full bg-secondary-50 hover:opacity-90 py-0.5 rounded cursor-pointer">
+      <div class="w-full bg-secondary-50 hover:opacity-90 py-0.5 rounded cursor-pointer">
         <span class="text-xs px-2 text-white" >Login</span>
       </div>
     </div>

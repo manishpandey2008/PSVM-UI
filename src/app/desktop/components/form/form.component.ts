@@ -117,7 +117,7 @@ export class FormComponent implements OnInit {
   saveForm(){
     if(!this.formGroup.valid){
       this.showValidationErrors=true
-      alert("Your form data is not valid")
+      alert("Your form data is not valid:"+this.formGroup.errors)
       return;
     }
     if(this.formData){

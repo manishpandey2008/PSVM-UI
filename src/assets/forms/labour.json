@@ -52,6 +52,24 @@
       "colSpan": "col-span-1"
     },
     {
+      "fieldName": "village",
+      "label": "Village",
+      "placeHolder": "Enter village",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
+      "fieldName": "post",
+      "label": "Post-office",
+      "placeHolder": "Enter post office",
+      "maxLength": 100,
+      "required": true,
+      "inputType": "input",
+      "colSpan": "col-span-1"
+    },
+    {
       "fieldName": "state",
       "label": "Center state",
       "placeHolder": "Select center state",
@@ -73,15 +91,6 @@
       "colSpan": "col-span-1"
     },
     {
-      "fieldName": "fullAddress",
-      "label": "Address",
-      "placeHolder": "Enter address",
-      "maxLength": 150,
-      "required": true,
-      "inputType": "textarea",
-      "colSpan": "col-span-2"
-    },
-    {
       "fieldName": "username",
       "label": "Username",
       "placeHolder": "Select user",
@@ -90,6 +99,15 @@
       "colSpan": "col-span-1",
       "apiData":"api/user/",
       "selectLabel":""
+    },
+    {
+      "fieldName": "fullAddress",
+      "label": "Address",
+      "placeHolder": "Enter address",
+      "maxLength": 150,
+      "required": true,
+      "inputType": "textarea",
+      "colSpan": "col-span-2"
     }
   ],
   "needStore":[
@@ -119,6 +137,14 @@
     {
       "field": "userPhone",
       "header": "Phone"
+    },
+    {
+      "field": "village",
+      "header": "Village"
+    },
+    {
+      "field": "post",
+      "header": "Post"
     },
     {
       "field": "state",

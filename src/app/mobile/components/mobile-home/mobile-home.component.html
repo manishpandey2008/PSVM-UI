@@ -13,10 +13,12 @@
   <div class="mt-2">
     <app-card-view [data]="govtYojna">
       <ng-container id="home">
-          <div *ngFor="let item of items;let i=index" ngClass="mt-2 ">
-            <span class="text-sm block font-semibold">{{i+1}}. प्रधानमंत्री श्रम योगी मानधन योजना :-</span>
-            <span class="text-xs">प्रधानमंत्री श्रम योगी मानधन योजना को 15 फरवरी 2019 को लागू किया गया था | इस योजना के तहत लाभार्थियों को 60 साल की आयु के पश्चात्....</span>
-            <a class="text-xs text-blue-600 px-2 py-1 bg-gray-200 rounded-sm" href="https://icdsupweb.org/pm-shram-yogi-mandhan-pension-yojana/">More details</a>
+          <div *ngFor="let yojana of allYojana;let i=index" ngClass="mt-2 ">
+            <span class="text-sm block font-semibold">{{i+1}}.{{yojana.yojanaName}} :-</span>
+            <span class="text-xs">
+              {{yojana.yojanaDescription}}
+            </span>
+            <a class="text-xs text-blue-600 px-2 py-1 bg-gray-200 rounded-sm" href="{{yojana.yojanaLink}}">More details</a>
           </div>
       </ng-container>
     </app-card-view>

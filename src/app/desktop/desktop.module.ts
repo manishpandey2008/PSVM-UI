@@ -21,6 +21,7 @@ import { ViewFormateComponent } from './components/view-formate/view-formate.com
 import { ConformationComponent } from './components/conformation/conformation.component';
 import { WorkCardComponent } from './components/work-card/work-card.component';
 import { StatusComponent } from './components/status/status.component';
+import { UserDropdownComponent } from './components/user-dropdown/user-dropdown.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { StatusComponent } from './components/status/status.component';
     ViewFormateComponent,
     ConformationComponent,
     WorkCardComponent,
-    StatusComponent
+    StatusComponent,
+    UserDropdownComponent
   ],
   exports:[
   ],
