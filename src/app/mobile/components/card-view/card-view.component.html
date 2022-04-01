@@ -5,7 +5,7 @@
     <div class="w-full flex justify-between items-center px-3 text-sm "  [class]="data.headerColor">
       <div class="py-4">{{data.header}}</div>
       <div [routerLink]="data.chageButtonUrl" class="px-3 py-1 bg-gray-200 rounded-lg" *ngIf="data.chageButtonUrl!='none' && data.layout==='home'">{{data.chageButtonText}}</div>
-      <input type="radio" name="location" id="location" *ngIf="data.layout==='location'" class="w-5 h-5">
+      <input type="radio" [checked]="checked" name="location" id="location" *ngIf="data.layout==='location'" class="w-5 h-5">
     </div>
     <div class="py-5 overflow-y-auto max-h-60 px-2 scrollable-div" [class]="data.textAlingment">
         <ng-content select="[id=home]" ></ng-content>

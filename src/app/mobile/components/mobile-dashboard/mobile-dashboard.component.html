@@ -3,10 +3,10 @@
       <app-mobile-top-nav (toggle)="sidebarToggel()"></app-mobile-top-nav>
   </div>
   <div class="w-full overflow-hidden" >
-      <div  class="absolute z-index-10 w-10">
+      <div  class="">
         <app-mobile-side-nav (selectResponce)="sidebarToggel()"></app-mobile-side-nav>
       </div>
-      <div class=" h-full overflow-x-scroll mt-20 pb-10" >
+      <div class=" h-screen overflow-y-auto overflow-x-scroll mt-20 pb-10" >
         <router-outlet></router-outlet>
       </div>
   </div>

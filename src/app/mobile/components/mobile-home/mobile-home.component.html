@@ -2,10 +2,10 @@
 
   <div class="mt-2">
     <app-card-view [data]="pinCode">
-      <ng-container id="home">
-        <span class="text-2xl block">802156</span>
-        <span class="text-base block">Agarsanda ,Behara</span>
-        <span class="text-base block">Ara, Bhojpur</span>
+      <ng-container id="home" *ngIf="isShowPincode">
+        <span class="text-2xl block">{{activePincode.pinCode}}</span>
+        <span class="text-base block">{{activePincode.village}} ,{{activePincode.postOffice}}</span>
+        <span class="text-base block">{{activePincode.postOffice}}</span>
       </ng-container>
     </app-card-view>
   </div>
@@ -37,12 +37,4 @@
       </ng-container>
     </app-card-view>
   </div>
-
-
-  <!-- <div class="mt-2">
-    <app-card-view>
-
-    </app-card-view>
-  </div> -->
-
 </div>

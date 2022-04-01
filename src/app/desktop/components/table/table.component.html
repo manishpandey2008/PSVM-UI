@@ -21,7 +21,7 @@
                  </span>
                 </td>
                 <ng-container *ngFor="let fieldName of header">
-                  <td class="py-3 px-6 text-left">
+                  <td class="py-3 px-6 text-left overflow-hidden" style="max-width: 8vw;">
                     <div class="flex items-center">
 
                       <div class="mr-2" *ngIf="fieldName.field=='name'">
@@ -30,11 +30,19 @@
 
                       <span *ngIf="!fieldName.store && !fieldName.pipe">{{x[fieldName.field]}}</span>
 
-                      <span *ngIf="fieldName.pipe=='date'">{{x[fieldName.field] | date:"mI"}}</span>
+                      <span *ngIf="fieldName.pipe=='date'">{{x[fieldName.field] | date:"mediumDate"}}</span>
 
                       <span *ngIf="fieldName.pipe=='role'">{{x[fieldName.field][0].name }}</span>
 
-                      <span *ngIf="fieldName.store">{{getStoreData(fieldName,x[fieldName.field] )}}</span>
+                      <span *ngIf="fieldName.pipe=='status'">
+                        <span *ngIf="x[fieldName.field]=='Active' || x[fieldName.field] =='active' " class="px-2 py-0.5 bg-green-200 text-green-700 font-bold rounded-md capitalize "> {{x[fieldName.field] }}</span>
+                        <span *ngIf="x[fieldName.field]=='Inactive' || x[fieldName.field] =='inactive' " class="px-2 py-0.5 bg-red-200 text-red-900 font-bold rounded-md capitalize "> {{x[fieldName.field] }}</span>
+                      </span>
+
+                      <span *ngIf="fieldName.store">
+                        {{getStoreData(fieldName,x[fieldName.field] )}}
+                      </span>
+
                     </div>
                   </td>
                 </ng-container>

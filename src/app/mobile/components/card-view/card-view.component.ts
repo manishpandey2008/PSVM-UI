@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CardViewComponent implements OnInit {
 
   @Input() data:any;
+  @Input() checked!:boolean;
 
   collapse=false
 

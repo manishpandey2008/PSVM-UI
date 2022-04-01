@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+
+  @Output() formResp=new EventEmitter;
 
   constructor() { }
 
@@ -16,6 +18,11 @@ export class FormComponent implements OnInit {
 
   ishowForm(data:any){
     this.isShow=data
+  }
+
+  saveData(){
+    this.formResp.emit(true);
+    this.isShow=false
   }
 
 }

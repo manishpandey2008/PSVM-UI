@@ -2,44 +2,21 @@
   <div class="py-3 border-b-8 border-lime-300 text-gray-600 text-center font-semibold text-xl">
     <span>All locations</span>
   </div>
-  <div class="mt-5">
-    <app-card-view [data]="pinCode">
-      <ng-container id="home">
-        <span class="text-2xl block">802156</span>
-        <span class="text-base block">Agarsanda ,Behara</span>
-        <span class="text-base block">Ara, Bhojpur</span>
-        <div (click)="openForm()" class=" mx-20 py-1 mt-1 rounded-full bg-gray-200 text-xs">
-          Edit
-        </div>
-      </ng-container>
-    </app-card-view>
-  </div>
+  <ng-container *ngIf="isShow">
+    <div class="mt-5" *ngFor="let item of allPinCode">
+      <app-card-view [data]="pinCode" [checked]="(item.activeStatus=='Active')?true:false">
+        <ng-container id="home">
+          <span class="text-2xl block">{{item.pinCode}}</span>
+          <span class="text-base block">{{item.village}} ,{{item.postOffice}}</span>
+          <span class="text-base block">{{item.address}}</span>
+          <div (click)="openInEdit(item)" class=" mx-20 py-1 mt-1 rounded-full bg-gray-200 text-xs">
+            Edit
+          </div>
+        </ng-container>
+      </app-card-view>
+    </div>
+  </ng-container>
 
-  <div class="mt-2">
-    <app-card-view [data]="pinCode2">
-      <ng-container id="home">
-        <span class="text-2xl block">802156</span>
-        <span class="text-base block">Agarsanda ,Behara</span>
-        <span class="text-base block">Ara, Bhojpur</span>
-        <div (click)="openForm()" class=" mx-20 py-1 mt-1 rounded-full bg-gray-200 text-xs">
-          Edit
-        </div>
-      </ng-container>
-    </app-card-view>
-  </div>
-
-  <div class="mt-2">
-    <app-card-view [data]="pinCode2">
-      <ng-container id="home">
-        <span class="text-2xl block">802156</span>
-        <span class="text-base block">Agarsanda ,Behara</span>
-        <span class="text-base block">Ara, Bhojpur</span>
-        <div (click)="openForm()" class=" mx-20 py-1 mt-1 rounded-full bg-gray-200 text-xs">
-          Edit
-        </div>
-      </ng-container>
-    </app-card-view>
-  </div>
 
   <div (click)="openForm()" class="py-2 mt-2 bg-yellow-500  text-gray-100 text-center ">
     <span class="text-2xl font-bold ">+</span>
@@ -47,24 +24,40 @@
 
 </div>
 
-<app-form>
-  <ng-container>
+<app-form (formResp)="save()">
+  <ng-container [formGroup]="formGroup" >
     <div class="text-gray-800 text-2xl flex justify-center border-b-2 py-2 mb-2">
       Add new location
     </div>
     <div class="mb-2">
-      <label class="block text-gray-700 text-sm font-normal mb-2" for="username" >
+      <label class="block text-gray-700 text-sm font-normal mb-2" for="pinCode" >
         Location pincode
       </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      <input id="pinCode" formControlName="pinCode" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         autofocus placeholder="Enter location pincode"
       />
     </div>
     <div class="mb-2">
-      <label class="block text-gray-700 text-sm font-normal mb-2"  for="password" >
+      <label class="block text-gray-700 text-sm font-normal mb-2" for="village" >
+       Village
+      </label>
+      <input id="village" formControlName="village" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        autofocus placeholder="Enter village name"
+      />
+    </div>
+    <div class="mb-2">
+      <label class="block text-gray-700 text-sm font-normal mb-2" for="postOffice" >
+        Post
+      </label>
+      <input id="postOffice" formControlName="postOffice" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        autofocus placeholder="Enter post office name"
+      />
+    </div>
+    <div class="mb-2">
+      <label class="block text-gray-700 text-sm font-normal mb-2"  for="address" >
         Address
       </label>
-      <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"  cols="27" rows="5"
+      <textarea id="address" formControlName="address" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"  cols="27" rows="5"
       placeholder="Enter your full address"></textarea>
     </div>
   </ng-container>
