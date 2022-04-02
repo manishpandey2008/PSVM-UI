@@ -9,6 +9,7 @@ export class CardViewComponent implements OnInit {
 
   @Input() data:any;
   @Input() checked!:boolean;
+  @Input() taskName:any;
 
   collapse=false
 
